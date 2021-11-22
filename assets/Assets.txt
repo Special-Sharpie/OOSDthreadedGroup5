@@ -1,0 +1,2 @@
+This folder is for all none "code" files
+ex: images, audio files, etc.

@@ -1,0 +1,2 @@
+This folder is for all style sheet files
+ex: index.css
