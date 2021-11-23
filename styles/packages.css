@@ -1,0 +1,48 @@
+/* Marat Nikitin, CPRG 210 - Web Application Concepts, Day 1-7 - Daily Exercises, November 2021 */
+/* Code in this page is created by Marat Nikitin unless specified otherwise */
+
+/* These are the default parameters for all of the pages */
+* {background-color: cornsilk;
+	font-family: "Arial", sans-serif;
+}
+
+/* This helps to have a footer about copyright on the contact.html page 
+	be always stuck on the very bottom of the page*/
+#Marat1 {
+	padding: 0px;
+	position: fixed;
+	bottom: 10px;
+	text-align: center;
+	width: 100%; 
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  td, th {
+	border: 2px solid #bbbbbb;
+	text-align: left;
+	padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+	background-color: #dddddd;
+  }
+
+/* Selecting & styling buttons */
+button {
+
+	text-align: center;
+	font-size: 16px;
+	margin-left: 10px;
+	border-radius: 6px;
+	padding: 2px 10px;
+	border: 2px solid #bbbbbb;
+}
+
+
+
+
+
