@@ -1,3 +1,3 @@
 # OOSD threaded Group5
 
-Our project for the PROJ207
+Our project for PROJ207
