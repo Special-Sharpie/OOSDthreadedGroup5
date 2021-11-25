@@ -9,16 +9,19 @@ const app = express();
 
 var port = 8000;
 
+app.use(express.urlencoded({extended: true}))
 
 app.use(express.static("scripts"))
 app.use(express.static("views", {"extensions": ["html", "htm"]}))
 app.use(express.static("assets"))
 app.use(express.static("styles"))
 
+app.set("view engine", "ejs")
+
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}, url: http://localhost:${port}`)
 });
 
 app.get('/register', (req, res)=>{
-    res.sendFile("register")
+    res.render("register")
 });
