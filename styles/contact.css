@@ -1,0 +1,26 @@
+.heading{
+    background-color: blanchedalmond;
+    text-shadow: 0 0 3px #FF0000;
+    width:300px;
+        }
+
+.para{
+    font-style:normal;
+    text-align: left;
+    width: 800px;
+    font-size: 150%;
+    
+    }
+    
+.add1{
+    list-style-type:none;
+
+}
+
+.bg
+{
+background-color: rgb(110, 177, 177);
+border: 20px;
+
+}
+
