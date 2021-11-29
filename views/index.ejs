@@ -1,3 +1,9 @@
+<!-- index.ejs -->
+<!-- Serves as the homepage for the website -->
+<!-- Author: Justin Molnar -->
+<!-- CPRG 207 - Threaded Project -->
+<!-- 2021-11-29 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="icon" href="gator.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="index.css">
     <title>Best Venture - Travel Experts</title>
 </head>
 <body>
 
-    <% include header.ejs %>
+    <%- include('header') %>
 
     <h1 class="hero">Hero Image</h1>
     <h1>Welcome to Best Venture!</h1>
@@ -41,11 +47,11 @@
                 </li>
             </ul>
         </div>
-    <div><img src="../assets/suitcases.jpg"></div>
+    <div><img src="suitcases.jpg"></div>
 
     </article>
 
-    <% include footer.ejs %>
+    <%- include("footer")%>
 
 </body>
 </html>

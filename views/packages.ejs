@@ -1,15 +1,21 @@
-<!-- Marat Nikitin, CPRG 207 - Threaded Project, Part 1, November-December 2021 -->
-<!-- Code in this page is created by Marat Nikitin unless specified otherwise -->
+<!-- packages.ejs -->
+<!-- Lists availible travel packages -->
+<!-- Author: Marat Nikitin -->
+<!-- CPRG 207 - Threaded Project -->
+<!-- 2021-11-29 -->
 
 <!DOCTYPE html>
 <html> 
 	<head>
 		 <title> Vacation Package </title>
 		 <!-- All the CSS styles are in the separate 'packages.css' file -->
+		 <link rel="icon" href="gator.png" />
 		<link rel="stylesheet" type="text/css" href="packages.css" />	
+		<link rel="stylesheet" type="text/css" href="index.css" />	
 	</head>
 	
 	<body>
+		<%- include('header') %> 
 		<h1> Vacation Packages </h1> <br> 
 		
 		<h2> List of available packages: </h2> <br>
@@ -26,31 +32,31 @@
 				<td> December 18, 2021 </td>
 				<td> December 31, 2021 </td>
 				<td> 1500 </td>
-				<td> <button onclick="window.location.href='index.html'"> Order This Package </button> </td>
+				<td> <button onclick="window.location.href='/'"> Order This Package </button> </td>
 			</tr>
 			<tr>
 				<td> Havana from Calgary </td>
 				<td> December 20, 2021 </td>
 				<td> December 27, 2021 </td>
 				<td> 1200 </td>
-				<td> <button onclick="window.location.href='index.html'"> Order This Package </button> </td>
+				<td> <button onclick="window.location.href='/'"> Order This Package </button> </td>
 			</tr>
 			<tr>
 				<td> Punta Cana from Vancouver </td>
 				<td> December 13, 2021 </td>
 				<td> December 22, 2021 </td>
 				<td> 1700 </td>
-				<td> <button onclick="window.location.href='index.html'"> Order This Package </button> </td>
+				<td> <button onclick="window.location.href='/'"> Order This Package </button> </td>
 			</tr>
 		
 		</table> <br><br>
 
 		<!--Below is the button for returning to the main page of the website. -->
-		<button onclick="window.location.href='index.html'"> Return To The Main Page </button>; <br><br>
+		<button onclick="window.location.href='/'"> Return To The Main Page </button> <br><br>
 		
 		<!-- This webpage doesn't have much content in it, so the footer below is given an id to pin 
 			the footer at the bottom of the page using CSS -->
-		<footer id="Marat1"> &copy; Copyright 2021 by Travel Experts. All rights reserved. </footer>
+		<%- include('footer') %> 
 	</body>
 </html>
 
