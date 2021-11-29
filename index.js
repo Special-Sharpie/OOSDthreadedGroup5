@@ -22,6 +22,18 @@ app.listen(port, ()=>{
     console.log(`Server started on port ${port}, url: http://localhost:${port}`)
 });
 
+app.get('/', (req, res)=>{
+    res.render('index')
+});
+
 app.get('/register', (req, res)=>{
     res.render("register")
+});
+
+app.get('/contact', (req, res)=>{
+    res.render("contact")
+});
+
+app.get('/packages', (req, res)=>{
+    res.render('packages')
 });
