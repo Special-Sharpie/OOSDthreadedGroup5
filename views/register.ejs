@@ -1,6 +1,7 @@
-<!-- register.html -->
+<!-- register.ejs -->
 <!-- Adds customers to database -->
 <!-- Author: Daniel Palmer -->
+<!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-22 -->
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
         <%- include('header') %> 
         <hr />
         <section >
-            <form id="registerform" method="post" action="bouncer.php">
+            <form id="registerform" method="post" action="/thankyou">
                 <div id="registerForm" class="registercontent">
                     <label for="fname">First Name</label> 
                     <br />
@@ -41,11 +42,6 @@
                     <br />
                     <input type="text" name="lname" onfocus="revealDescription('lastname')" onblur="hideDescription('lastname')" placeholder="Last Name" />
                     <span id="lastname" style="visibility: hidden;">Customer Lastname</span>
-                    <br />
-                    <label for="birthday">Date of Birth</label>
-                    <br />
-                    <input type="date" name="birthday" onfocus="revealDescription('birthday')" onblur="hideDescription('birthday')" />
-                    <span id="birthday" style="visibility: hidden;">Customer Date of Birth</span>
                     <br />
                     <label for="password">Password</label>
                     <br />
@@ -62,10 +58,20 @@
                     <input type="email" name="email" onfocus="revealDescription('email')" onblur="hideDescription('email')" placeholder="example@domain.ca" />
                     <span id="email" style="visibility: hidden;">Add an email for account management</span>
                     <br />
-                    <label for="phone">Phone Number</label>
+                    <label for="phonenumber">Phone Number</label>
                     <br />
                     <input type="text" name="phonenumber" onfocus="revealDescription('phone')" onblur="hideDescription('phone')" placeholder="403-555-5555" />
                     <span id="phone" style="visibility: hidden;">Add a phone number for contact</span>
+                    <br />
+                    <label for="busphone">Business Phone Number</label>
+                    <br />
+                    <input type="text" name="busphone" onfocus="revealDescription('busphone')" onblur="hideDescription('busphone')" placeholder="403-555-5555" />
+                    <span id="busphone" style="visibility: hidden;">Add a business phone number, enter your above phone number if dont have one</span>
+                    <br />
+                    <label for="address">Address</label>
+                    <br />
+                    <input type="text" name="address" onfocus="revealDescription('address')" onblur="hideDescription('address')" placeholder="Adress" class="registerinput" />
+                    <span id="address" style="visibility: hidden;">Customer Address</span>
                     <br />
                     <label for="city">City </label>
                     <span>- We use this information to gauge flight costs and sales tax to maximize trip value!</span>
@@ -97,10 +103,16 @@
                     <input type="text" name="postalcode" onfocus="revealDescription('postal')" onblur="hideDescription('postal')" placeholder="Q1Q 1Q1/55555-4444" />
                     <span id="postal" style="visibility: hidden;">Customer Postal Code/Zip Code</span>
                     <br />
-                    <label for="vacation">Describe your ideal vacation</label>
+                    <label for="agent">Did one of our Agents assist you?</label>
                     <br />
-                    <textarea name="vacation" rows="4" cols="50" placeholder="Describe your ideal vacation to help our agents draw up your perfect vacation!"></textarea>
-                    <br />
+                    <select name="agent" onfocus="revealDescription('agent')" onblur="hideDescription('agent')">
+                        <option></option>
+                        <option>None</option>
+                        <% agents.forEach((agent)=>{ %>
+                            <option><%= agent.AgtFirstName %> <%= agent.AgtLastName %></option>
+                        <% }) %> 
+                    </select>
+                    <span id="agent" style="visibility: hidden;">Select the name of the agent who assited you</span>
                     <input type="submit" value="Send" class="formsubmit" onclick="return validate()" />
                     <input type="reset" value="Clear" class="formsubmit" onclick="return confirm('Are you sure you want clear all values from all fields?')" />
                 </div>
