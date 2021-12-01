@@ -57,6 +57,14 @@ app.get('/login', (req, res)=>{
     res.render("login")
 });
 
+app.get('/thankyou', (req, res)=>{
+    res.render("thankyou")
+});
+
+app.get('/customerhome', (req, res)=>{
+    res.render("customerhome")
+});
+
 app.post('/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
