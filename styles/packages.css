@@ -1,12 +1,8 @@
-/* Marat Nikitin, CPRG 210 - Web Application Concepts, Day 1-7 - Daily Exercises, November 2021 */
-/* Code in this page is created by Marat Nikitin unless specified otherwise */
-
-/* These are the default parameters for all of the pages 
-* {background-color: cornsilk;
-	font-family: "Arial", sans-serif;
-}
-/* This helps to have a footer about copyright on the contact.html page 
-	be always stuck on the very bottom of the page*/
+/* packages.css */
+/* styling of the packages page */
+/* Author: Marat Nikitin */
+/* CPRG 207 - Threaded Project */
+/* 2021-11-30 */
 
 :root {
 	--charcoal: #264653ff;
@@ -15,45 +11,42 @@
 	--orange: #f4a261ff;
 	--sienna: #e76f51ff;
 }
-/* Maybe replace hard coded colors with vars from root for consistency if it looks alright? */
-
-
-/* Not Used */
-#Marat1 {
-	padding: 0px;
-	position: fixed;
-	bottom: 10px;
-	text-align: center;
-	width: 100%; 
-}
 
 table {
-	border-collapse: collapse;
-	width: 100%;
-  }
-  
-  td, th {
-	border: 2px solid #bbbbbb;
+	color: #264653ff;
 	text-align: left;
-	padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-	background-color: #dddddd;
-  }
-
-/* Selecting & styling buttons */
-button {
-
-	text-align: center;
 	font-size: 16px;
-	margin-left: 10px;
-	border-radius: 6px;
-	padding: 2px 10px;
-	border: 2px solid #bbbbbb;
+	border-collapse: collapse;
+	width: 96%;
+	margin-left: 2%;
+}
+  
+td, th {
+	border: 2px solid #264653ff;
+	padding: 8px;
+	padding-top: 20px; 
+	padding-bottom: 20px;
+  }
+
+td {
+	font-size: 18px;
+	text-align: left;
+	background-color:  #e9c46aff;
 }
 
+th {
+	text-align: center;
+	font-size: 20px;
+	background-color: #e9c46aff;
+}
 
-
-
+/* For the header of a list of packages */
+#div7 {
+	color: #264653ff;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
