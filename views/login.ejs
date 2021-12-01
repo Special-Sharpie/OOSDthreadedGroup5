@@ -21,17 +21,23 @@
     <title>Best Venture - Travel Experts</title>
 </head>
 <body>
-    <form method="post">
-        <label for="username">Username</label>
-        <br />
-        <input type="text" name="username" placeholder="Username"/>
-        <br />
-        <label for="password">Password</label>
-        <br />
-        <input type="password" name="password" placeholder="Password"/>
-        <br />
-        <button>Log In</button>
-    </form>
-    <h2>Don't have an account?</h2>
-    <a href="/register"><button>Register</button></a>
+    <%- include('header') %> <br />
+    <article>
+        <div>
+            <form method="post">
+                <label for="username">Username</label>
+                <br />
+                <input type="text" name="username" placeholder="Username"/>
+                <br />
+                <label for="password">Password</label>
+                <br />
+                <input type="password" name="password" placeholder="Password"/>
+                <br />
+                <button>Log In</button>
+            </form>
+            <h2>Don't have an account?</h2>
+            <a href="/register"><button>Register</button></a>
+        </div>
+    </article>
+    <%- include('footer') %> 
 </body>
