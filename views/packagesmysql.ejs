@@ -1,0 +1,45 @@
+<!-- packagesmysql.ejs -->
+<!-- Lists availible travel packages generated using data from the travelexperts SQL database -->
+<!-- Author: Marat Nikitin -->
+<!-- CPRG 207 - Threaded Project -->
+<!-- 2021-11-30 -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ejs - Packages </title>
+		 <!-- All the CSS styles are in the separate 'styles.css' file -->
+		 <link rel="stylesheet" type="text/css" href="index.css" />
+		<link rel="stylesheet" type="text/css" href="packages.css" />	
+	</head>
+	<body>
+		<div id = "div7"> The List Of Available Packages: </div> <br>
+		
+		<!-- A table with data from the travelexperts MySQL database is displayed: -->
+		<table>
+			<!-- A row with customised column header names is created and displayed: -->
+			<%let tableHeaders = ["Package ID", "Package Name", "Start Date", "End Date", "Description", 
+			"Package Price, CAD", "Agency Comission, CAD"];%> <!-- Created an array of table headers here -->
+				<tr>
+				<% for (let key in tableHeaders) {
+					if (tableHeaders.hasOwnProperty(key)) { %>
+						<th><%= tableHeaders[key] %></th>
+				<%	}
+				} %>
+				</tr>
+			<!-- Rows of information about packages is retrieved from the database and displayed dynamically: -->	
+			<% for (let customer of result) { %>
+				<tr>
+				<% for (let key in customer) {
+					if (customer.hasOwnProperty(key)) { %>
+						<td><%= customer[key] %></td>
+				<%	}
+				} %>
+				</tr>
+			<% } %>
+		</table>
+
+		<%- include("footer")%>
+
+	</body>
+</html>
