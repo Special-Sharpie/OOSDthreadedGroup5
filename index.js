@@ -32,8 +32,8 @@ app.get('/', (req, res)=>{
 app.get('/register', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "Daniel",
-		password: "pass",
+		user: "justin",
+		password: "password",
 		database: "travelexperts"
     });
     //Pulls the Agent name data from the database, then passes it down to the register page
@@ -88,8 +88,8 @@ app.post('/login', (req, res)=>{
 app.post('/thankyou', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "Daniel",
-		password: "pass",
+		user: "justin",
+		password: "password",
 		database: "travelexperts"
     });
     // The following code is used to verify that the email being

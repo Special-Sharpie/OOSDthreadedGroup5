@@ -7,6 +7,18 @@
 }
 /* This helps to have a footer about copyright on the contact.html page 
 	be always stuck on the very bottom of the page*/
+
+:root {
+	--charcoal: #264653ff;
+	--green: #2a9d8fff;
+	--yellow: #e9c46aff;
+	--orange: #f4a261ff;
+	--sienna: #e76f51ff;
+}
+/* Maybe replace hard coded colors with vars from root for consistency if it looks alright? */
+
+
+/* Not Used */
 #Marat1 {
 	padding: 0px;
 	position: fixed;

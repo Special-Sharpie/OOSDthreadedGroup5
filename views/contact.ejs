@@ -14,22 +14,30 @@
     <title>Document</title>
     <link rel="stylesheet" href="contact.css"/>
     <link rel="stylesheet" href="index.css"/>
+
+    <!--Montserrat and Roboto - Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body class="bg">
+<body>
     <%- include("header") %> 
-    <h1 class="heading">Travel Experts</h1>
-    <h3>About Us...</h3>
-    <p class="para" >We are one of the leading travel agencies in Alberta. At Travel Experts, we take pride
-         in providing our clients with customized services right from planning to conclusion of your trips
-          including rescheduling and documentation. For business or pleasure, we take pride in providing you
-           with the deals in market.Check out our exciting <a href="/packages">packages</a>. we guarantee that you can  
-           save your money and time and focus on more important aspects of your travel.We guarantee that
-         you save money and time and focus on 
-        more important aspects of your travel. <a href="/register">Register</a> with us 
-        so that you get our top deals.</p>
-    </p>
-    <h3>Our Location</h3>
-        <ul class="add1">
+    <h1>About Us...</h1>
+    <article>
+        <div>
+            <p>
+            We are one of the leading travel agencies in Alberta. At Travel Experts, we take pride
+            in providing our clients with customized services right from planning to conclusion of your trips
+            including rescheduling and documentation. For business or pleasure, we take pride in providing you
+            with the deals in market. Check out our exciting <a href="/packages">packages</a>. We guarantee that you can  
+            save your money and time and focus on more important aspects of your travel. We guarantee that
+            you save money and time and focus on more important aspects of your travel. 
+            <a href="/register">Register</a> with us so that you get our top deals.
+            </p>
+        </div>
+    </article>
+    <h2>Our Location</h2>
+        <ul class="contactlist">
             <li>145 Aarathi Manor</li>
             <li>SW Calgary</li>
             <li>INN 001</li>
@@ -37,9 +45,9 @@
 
         </ul>
 
-        <h3>Contact Us....</h3>
+        <h2>Contact Us....</h2>
         <section>
-        <ol class="add1">
+        <ol class="contactlist">
        <div>
            
           <li>Alex Jacob</li>
@@ -50,7 +58,7 @@
           <li>phone:4354366634</li> 
           <li><a href="mailto:jamessm@gmail.com">e-mail James</a></li></div>
     </ol>
-</section>
+        </section>
     <%- include("footer") %> 
 </body>
 </html>
