@@ -32,8 +32,8 @@ app.get('/', (req, res)=>{
 app.get('/register', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "justin",
-		password: "password",
+		user: "group5",
+		password: "pass",
 		database: "travelexperts"
     });
     //Pulls the Agent name data from the database, then passes it down to the register page
@@ -68,7 +68,7 @@ app.get('/customerhome', (req, res)=>{
 app.post('/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "Daniel",
+		user: "group5",
 		password: "pass",
 		database: "travelexperts"
     });
