@@ -144,3 +144,32 @@ app.post('/thankyou', (req, res)=>{
         });
     });
 });
+
+/* Marat Nikitin: data for /getpackages is retrieved from the database using an sql query:*/
+app.get("/getpackages", (req, res)=>{
+    var getConnection = ()=>{
+        return mysql.createConnection({
+            host: "localhost",
+            user: "group5",
+            password: "pass", /* Need to make sure that this user with precisely this password is authorised at phpMyAdmin */
+            database: "travelexperts"
+        });
+    }
+
+    var conn = getConnection();
+    conn.connect((err)=>{
+        if (err) throw err;
+        
+        var sql = "select * from packages"; 
+        conn.query(sql, (err, result, fields)=>{
+            if (err) throw err;
+            
+            res.render("packagesmysql", { result: result }); 
+            /* packagesmysql.ejs file is used to display the information 
+               about packages comprehensively */
+            conn.end((err)=>{
+                if (err) throw err;
+            });
+        });
+    });
+});
