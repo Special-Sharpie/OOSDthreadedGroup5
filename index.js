@@ -63,11 +63,11 @@ app.get('/login', (req, res)=>{
 app.get('/thankyou', (req, res)=>{
     res.render("thankyou")
 });
-
+/*
 app.get('/customerhome', (req, res)=>{
     res.render("customerhome")
 });
-
+*/
 app.post('/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
@@ -75,33 +75,61 @@ app.post('/login', (req, res)=>{
 		password: "pass",
 		database: "travelexperts"
     });
-    console.log(req.url)
-    con.connect((err)=>{
-        if (err) throw err;
-        var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
-        con.query(checkPassword, (err, results)=>{
+    if (req.query.path == "/customerhome"){
+        con.connect((err)=>{
             if (err) throw err;
-            if (req.body.password == results[0].password){
-                var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
-                con.query(customerQuery, (err, results)=>{
-                    if (err) throw err;
-                    delete results[0].password
-                    var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
-                    var customerData = results;
-                    con.query(customerOrders, (err, results)=>{
+            var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
+            con.query(checkPassword, (err, results)=>{
+                if (err) throw err;
+                if (req.body.password == results[0].password){
+                    var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
+                    con.query(customerQuery, (err, results)=>{
                         if (err) throw err;
-                        console.log(results)
-                        res.render("customerhome", {customer: customerData[0], orders: results})
-                        con.end((err)=>{
+                        delete results[0].password
+                        var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
+                        var customerData = results;
+                        con.query(customerOrders, (err, results)=>{
                             if (err) throw err;
+                            console.log(results)
+                            res.render("customerhome", {customer: customerData[0], orders: results})
+                            con.end((err)=>{
+                                if (err) throw err;
+                            });
                         });
                     });
-                });
-            }else{
-                res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
-            }
+                }else{
+                    res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
+                }
+            });
         });
-    });
+    }else if(req.query.path =="/order"){
+        con.connect((err)=>{
+            if (err) throw err;
+            var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
+            con.query(checkPassword, (err, results)=>{
+                if (err) throw err;
+                if (req.body.password == results[0].password){
+                    var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
+                    con.query(customerQuery, (err, results)=>{
+                        if (err) throw err;
+                        delete results[0].password
+                        var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
+                        var customerData = results;
+                        con.query(customerOrders, (err, results)=>{
+                            if (err) throw err;
+                            console.log(results)
+                            res.render("order")
+                            con.end((err)=>{
+                                if (err) throw err;
+                            });
+                        });
+                    });
+                }else{
+                    res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
+                }
+            });
+        });
+    };
 });
 
 app.post('/thankyou', (req, res)=>{
@@ -191,9 +219,16 @@ app.get("/getpackages", (req, res)=>{
     });
 });
 
-app.get('/order', (req, res)=>{
-    res.render('order')
+app.get('/customerhome', (req, res)=>{
+    var pathRequested = encodeURIComponent(`${req.url}`);
+    res.redirect('/login?path=' + pathRequested)
 });
+
+app.get('/order', (req, res)=>{
+    var pathRequested = encodeURIComponent(`${req.url}`);
+    res.redirect('/login?path=' + pathRequested)
+})
+
 
 app.use((req, res)=>{
     res.status(404).render("404")
