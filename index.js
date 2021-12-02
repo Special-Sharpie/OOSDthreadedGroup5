@@ -36,7 +36,7 @@ app.get('/register', (req, res)=>{
         host: "localhost",
 		user: "group5",
 		password: "pass",
-		database: "test"
+		database: "travelexperts"
     });
     //Pulls the Agent name data from the database, then passes it down to the register page
     var agentNameQuery = "SELECT AgtFirstName, AgtLastName FROM agents"
@@ -72,7 +72,7 @@ app.post('/login', (req, res)=>{
         host: "localhost",
 		user: "group5",
 		password: "pass",
-		database: "test"
+		database: "travelexperts"
     });
     console.log(req.url)
     con.connect((err)=>{
@@ -108,7 +108,7 @@ app.post('/thankyou', (req, res)=>{
         host: "localhost",
 		user: "group5",
 		password: "pass",
-		database: "test"
+		database: "travelexperts"
     });
     // The following code is used to verify that the email being
     // registered with has not been used in the with another account.
@@ -163,7 +163,7 @@ app.get("/getpackages", (req, res)=>{
             host: "localhost",
             user: "group5",
             password: "pass", /* Need to make sure that this user with precisely this password is authorised at phpMyAdmin */
-            database: "test"
+            database: "travelexperts"
         });
     };
 
