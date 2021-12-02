@@ -2,6 +2,8 @@
  * Index.js
  * Serves as the main file for our project.
  * Author: Daniel Palmer
+ * Co-author: Justin Molnar
+ * Co-author: Marat Nikitin
  * CPRG 207 - Threaded Project
  * 2021-11-22
  */
@@ -145,7 +147,8 @@ app.post('/thankyou', (req, res)=>{
     });
 });
 
-/* Marat Nikitin: data for /getpackages is retrieved from the database using an sql query:*/
+/* This block below was created by Marat Nikitin*/
+/*  data for /getpackages is retrieved from the database using an sql query:*/
 app.get("/getpackages", (req, res)=>{
     var getConnection = ()=>{
         return mysql.createConnection({
@@ -160,7 +163,9 @@ app.get("/getpackages", (req, res)=>{
     conn.connect((err)=>{
         if (err) throw err;
         
-        var sql = "select * from packages"; 
+        var sql = "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, 'orderButton' FROM packages";
+        /* This query ensures that that last column with the Agency's commission is not displayed on the Packages page.
+            Normally, travel agencies do not disclose their commission openly and hide it inside the package's total price. */ 
         conn.query(sql, (err, result, fields)=>{
             if (err) throw err;
             
