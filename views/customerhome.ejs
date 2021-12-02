@@ -24,4 +24,10 @@
     <% for (var key in customer){ %> 
         <p> <%= customer[key] %>  </p>
     <% }; %> 
+
+        <% orders.forEach((order)=>{ %> 
+            <% for (var key in order){ %> 
+                <p> <%= order[key] %>  </p>
+            <% }; %>
+        <% }) %> 
 </body>
