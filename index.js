@@ -36,7 +36,7 @@ app.get('/register', (req, res)=>{
         host: "localhost",
 		user: "group5",
 		password: "pass",
-		database: "travelexperts"
+		database: "test"
     });
     //Pulls the Agent name data from the database, then passes it down to the register page
     var agentNameQuery = "SELECT AgtFirstName, AgtLastName FROM agents"
@@ -72,25 +72,33 @@ app.post('/login', (req, res)=>{
         host: "localhost",
 		user: "group5",
 		password: "pass",
-		database: "travelexperts"
+		database: "test"
     });
+    console.log(req.url)
     con.connect((err)=>{
         if (err) throw err;
         var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
         con.query(checkPassword, (err, results)=>{
+            if (err) throw err;
             if (req.body.password == results[0].password){
                 var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
                 con.query(customerQuery, (err, results)=>{
+                    if (err) throw err;
                     delete results[0].password
-                    res.render("customerhome", {customer: results[0]})
+                    var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
+                    var customerData = results;
+                    con.query(customerOrders, (err, results)=>{
+                        if (err) throw err;
+                        console.log(results)
+                        res.render("customerhome", {customer: customerData[0], orders: results})
+                        con.end((err)=>{
+                            if (err) throw err;
+                        });
+                    });
                 });
-
             }else{
                 res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
             }
-            con.end((err)=>{
-                if (err) throw err;
-            })
         });
     });
 });
@@ -98,9 +106,9 @@ app.post('/login', (req, res)=>{
 app.post('/thankyou', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "justin",
-		password: "password",
-		database: "travelexperts"
+		user: "group5",
+		password: "pass",
+		database: "test"
     });
     // The following code is used to verify that the email being
     // registered with has not been used in the with another account.
@@ -155,9 +163,9 @@ app.get("/getpackages", (req, res)=>{
             host: "localhost",
             user: "group5",
             password: "pass", /* Need to make sure that this user with precisely this password is authorised at phpMyAdmin */
-            database: "travelexperts"
+            database: "test"
         });
-    }
+    };
 
     var conn = getConnection();
     conn.connect((err)=>{
@@ -166,10 +174,12 @@ app.get("/getpackages", (req, res)=>{
         var sql = "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, 'orderButton' FROM packages";
         /* This query ensures that that last column with the Agency's commission is not displayed on the Packages page.
             Normally, travel agencies do not disclose their commission openly and hide it inside the package's total price. */ 
-        conn.query(sql, (err, result, fields)=>{
+        conn.query(sql, (err, results, fields)=>{
             if (err) throw err;
-            
-            res.render("packagesmysql", { result: result }); 
+            results.forEach((result) => {
+                delete result.orderButton 
+            });
+            res.render("packagesmysql", { result: results }); 
             /* packagesmysql.ejs file is used to display the information 
                about packages comprehensively */
             conn.end((err)=>{
@@ -177,4 +187,12 @@ app.get("/getpackages", (req, res)=>{
             });
         });
     });
+});
+
+app.get('/order', (req, res)=>{
+    res.render('order')
+});
+
+app.use((req, res)=>{
+    res.status(404).render("404")
 });

@@ -29,28 +29,31 @@
 		<!-- A table with data from the travelexperts MySQL database is displayed: -->
 		<table>
 			<!-- A row with customised column header names is created and displayed: -->
-			<%let tableHeaders = ["Package ID", "Package Name", "Start Date", "End Date", "Description", 
+			<% let tableHeaders = ["Package ID", "Package Name", "Start Date", "End Date", "Description", 
 			"Package Price, CAD", "Order a Package"];%> <!-- Created an array of table headers here, the last column 
 					from the database's packages table (agency's commission) was intentionally replaced by order buttons. -->
 				<tr>
-				<% for (let key in tableHeaders) {
-					if (tableHeaders.hasOwnProperty(key)) { %>
+				<% for (let key in tableHeaders) { %>
+					<% if (tableHeaders.hasOwnProperty(key)) { %>
 						<th><%= tableHeaders[key] %></th>
-				<%	}
-				} %>
+					<% } %>
+				<% } %>
 				</tr>
 			<!-- Rows of information about packages are retrieved from the database and displayed dynamically: -->	
 			<% for (let customer of result) { %>
 				<tr>
-				<% for (let key in customer) {
-					if (customer.hasOwnProperty(key)) { %>
+				<% for (let key in customer) { %>
+					<%  if (customer.hasOwnProperty(key)) { %>
 						<td><%= customer[key] %></td>
-				<%	}
-				} %>
+					<%	} %>
+				<% } %>
+				<td>
+					<a href="/order"><button> Order This Package </button></a>
+				</td>
 				</tr>
 			<% } %>
 		</table>
-		<!-- <button onclick="window.location.href='/'"> Order This Package </button> -->
+		
 		<br> <br> <br> <br> <br>
 
 		<%- include("footer")%>
