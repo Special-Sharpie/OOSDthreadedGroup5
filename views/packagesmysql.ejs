@@ -19,17 +19,18 @@
 		<link rel="stylesheet" href="index.css">		 
 		<link rel="stylesheet" type="text/css" href="packages.css" />	
 		<title> Packages - Travel Agents </title>
+		<script src="dateFormatting.js"></script>
 	</head>
 	<body>
 
 		<%- include("header") %>
 
-		<div id = "div7"> Our best packages for you: </div> <br>
+		<div id = "div7"> Our best packages for you: </div>
 		
 		<!-- A table with data from the travelexperts MySQL database is displayed: -->
 		<table>
 			<!-- A row with customised column header names is created and displayed: -->
-			<% let tableHeaders = ["Package ID", "Package Name", "Start Date", "End Date", "Description", 
+			<% let tableHeaders = ["Package Name", "Start Date", "End Date", "Description", 
 			"Package Price, CAD", "Order a Package"];%> <!-- Created an array of table headers here, the last column 
 					from the database's packages table (agency's commission) was intentionally replaced by order buttons. -->
 				<tr>
