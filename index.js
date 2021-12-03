@@ -69,8 +69,11 @@ app.get('/customerhome', (req, res)=>{
 });
 */
 
-//Serves the login page when accessing customerhome, and orders pages.
-//Pulls the data  
+// Serves the login page when accessing customerhome, and orders pages.
+// Pulls the path from the pages above, and serves pages accordingly
+// When login button is clicked, the email is checked againts the database,
+// if the email exists, it pulls the password associated with it.
+// The password is compared with with submitted value, if they match the user is served the requested page.
 app.post('/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
