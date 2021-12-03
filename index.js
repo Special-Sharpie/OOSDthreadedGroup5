@@ -11,6 +11,7 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
+const dateFormatting= require("./scripts/dateFormatting");
 
 var port = 8000;
 
@@ -171,13 +172,14 @@ app.get("/getpackages", (req, res)=>{
     conn.connect((err)=>{
         if (err) throw err;
         
-        var sql = "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, 'orderButton' FROM packages";
-        /* This query ensures that that last column with the Agency's commission is not displayed on the Packages page.
+        var sql = "SELECT PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice FROM packages";
+        /* This query ensures that that first & last columns (Package ID & Agency's Commission) are not displayed on the Packages page.
             Normally, travel agencies do not disclose their commission openly and hide it inside the package's total price. */ 
         conn.query(sql, (err, results, fields)=>{
             if (err) throw err;
             results.forEach((result) => {
-                delete result.orderButton 
+                result.PkgStartDate = dateFormatting.dateFormatting(result.PkgStartDate); 
+                result.PkgEndDate = dateFormatting.dateFormatting(result.PkgEndDate); 
             });
             res.render("packagesmysql", { result: results }); 
             /* packagesmysql.ejs file is used to display the information 
