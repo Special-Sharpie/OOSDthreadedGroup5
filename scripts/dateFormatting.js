@@ -10,7 +10,7 @@
  const advancedFormat = require('dayjs/plugin/advancedFormat');
  dayjs.extend(advancedFormat);
   
- exports.dateFormatting = ()=>{
-     return dayjs().format('dddd MMMM D, YYYY, h:mm a');
+ exports.dateFormatting = (requestedDate)=>{
+     return dayjs(requestedDate).format('dddd MMMM D, YYYY, h:mm a');
  };
  
