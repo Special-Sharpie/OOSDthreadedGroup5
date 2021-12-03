@@ -24,6 +24,7 @@ nav {
     padding: .5em 0em .5em 0em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+    z-index: 2;
 }
 
 nav a {
@@ -42,12 +43,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--charcoal);
     text-align: center;
     padding: .5em 0em .5em 0em;
-}
-
-.hero {
-    text-align: center;
-    padding: 15% 0px 15% 0%;
-    border: solid 2px;
+    font-weight: 800;
 }
 
 article {
