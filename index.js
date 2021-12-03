@@ -68,6 +68,9 @@ app.get('/customerhome', (req, res)=>{
     res.render("customerhome")
 });
 */
+
+//Serves the login page when accessing customerhome, and orders pages.
+//Pulls the data  
 app.post('/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
@@ -226,7 +229,7 @@ app.get('/customerhome', (req, res)=>{
 
 app.get('/order', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
-    res.redirect('/login?path=' + pathRequested)
+    res.redirect('/?ploginath=' + pathRequested)
 })
 
 
