@@ -232,7 +232,7 @@ app.get('/customerhome', (req, res)=>{
 
 app.get('/order', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
-    res.redirect('/?ploginath=' + pathRequested)
+    res.redirect('/login?path=' + pathRequested)
 })
 
 
