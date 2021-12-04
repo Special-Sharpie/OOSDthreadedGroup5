@@ -13,12 +13,67 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="headfoot.css">
+        <script>
+            function revealDescription(id){
+                document.getElementById(id).style.visibility = 'visible'
+                }
+            function hideDescription(id){
+                document.getElementById(id).style.visibility = "hidden"
+            }
+        </script>
+        <script src="readOrders.js"></script>
         <title>Best Venture - Travel Experts</title>
     </head>
     <body>
 <body>
+    <%- include('header') %>
+    <br />
+    <br />
     <div class="main-content">
-        Order Package here!
+        <h2>Order Packages</h2>
+        <section>
+            <form id="orderForm" method="post" action="/orderPlaced">
+                <label for="fname">First Name</label> 
+                <br />
+                <input type="text" name="fname" onfocus="revealDescription('firstname')" onblur="hideDescription('firstname')" value="<%= customer.CustFirstName %>" readonly="readonly" />
+                <span id="firstname" style="visibility: hidden;">Account Firstname</span>
+                <br />
+                <label for="lname">Last Name</label>
+                <br />
+                <input type="text" name="lname" onfocus="revealDescription('lastname')" onblur="hideDescription('lastname')" value="<%= customer.CustLastName %>" readonly="readonly" />
+                <span id="lastname" style="visibility: hidden;">Account Lastname</span>
+                <br />
+                <label for="email">Email</label>
+                <br />
+                <input type="email" name="email" onfocus="revealDescription('email')" onblur="hideDescription('email')" value="<%= customer.CustEmail %>" readonly="readonly" />
+                <span id="email" style="visibility: hidden;">Account Email</span>
+                <br />
+                <label for="package">Select one of our current Packages!</label>
+                <br />
+                <select name="package">
+                    <option></option>
+                    <% packages.forEach((tripPackage)=>{ %>
+                        <option><%= tripPackage.PackageId %> - <%= tripPackage.PkgName %></option>
+                    <% }) %> 
+                </select>
+                <br />
+                <label for="groupSize">How many people will be on the trip?</label>
+                <br />
+                <input type="number" name="groupSize" min="1" max="10" />
+                <br />
+                <label for="type">What kind of trip are you going on?</label>
+                <br />
+                <select name="type">
+                    <option></option>
+                    <option> Business </option>
+                    <option> Group </option>
+                    <option> Leisure </option>
+                </select>
+                <input type="submit" value="Send" class="formsubmit" onclick="return validate()" />
+                <input type="reset" value="Clear" class="formsubmit" onclick="return confirm('Are you sure you want clear all values from all fields?')" />
+            </form>
+        </section>
     </div>
+    <%- include('footer') %> 
 </body>
 </html>

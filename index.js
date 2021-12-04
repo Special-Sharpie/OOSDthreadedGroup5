@@ -8,6 +8,7 @@
  * 2021-11-22
  */
 
+const dayjs = require("dayjs");
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
@@ -96,7 +97,6 @@ app.post('/login', (req, res)=>{
                         var customerData = results;
                         con.query(customerOrders, (err, results)=>{
                             if (err) throw err;
-                            console.log(results)
                             res.render("customerhome", {customer: customerData[0], orders: results})
                             con.end((err)=>{
                                 if (err) throw err;
@@ -104,7 +104,7 @@ app.post('/login', (req, res)=>{
                         });
                     });
                 }else{
-                    res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
+                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href ="/login?path=${req.query.path}"; </script>`);
                 }
             });
         });
@@ -119,23 +119,57 @@ app.post('/login', (req, res)=>{
                     con.query(customerQuery, (err, results)=>{
                         if (err) throw err;
                         delete results[0].password
-                        var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
-                        var customerData = results;
-                        con.query(customerOrders, (err, results)=>{
+                        var packagesQuery = `SELECT PackageId, PkgName, PkgStartDate FROM packages`
+                        var customerData = results[0];
+                        con.query(packagesQuery, (err, results)=>{
                             if (err) throw err;
-                            console.log(results)
-                            res.render("order")
+                            for (var i = 0; i < results.length; i++){
+                                if ( dayjs(results[i].PkgStartDate).diff(dayjs(), 'days') <= 0){
+                                    delete results[i];
+                                };
+                            };
+                            res.render("order", {customer: customerData, packages: results})
                             con.end((err)=>{
                                 if (err) throw err;
                             });
                         });
                     });
                 }else{
-                    res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
+                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
                 }
             });
         });
     };
+});
+
+app.post('/orderPlaced', (req, res)=>{
+    const con = mysql.createConnection({
+        host: "localhost",
+		user: "group5",
+		password: "pass",
+		database: "travelexperts"
+    });
+    var splitPackage = req.body.package.split(" - ")
+    var bookingNum = "ABC" + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9))
+    var customerIdQuery = `SELECT CustomerId FROM customers WHERE CustFirstName="${req.body.fname}" and CustLastName="${req.body.lname}"`
+    con.query(customerIdQuery, (err, results)=>{
+        if (err) throw err;
+        var customerId = results[0].CustomerId
+        var tripIdQuery = `SELECT TripTypeId from triptypes WHERE TTname="${req.body.type}"`
+        con.query(tripIdQuery, (err, results)=>{
+            if (err) throw err;
+            var tripId = results[0].TripTypeId
+            var addBooking ="INSERT INTO bookings(BookingDate, BookingNo, TravelerCount, CustomerId, TripTypeId, PackageId) VALUES (?,?,?,?,?,?)"
+            con.query(addBooking, [dayjs().format(), bookingNum, req.body.groupSize, customerId, tripId, splitPackage[0]], (err, results)=>{
+                if (err) throw err;
+                res.render('orderPlaced')
+                con.end((err)=>{
+                    if (err) throw err;
+                });
+            });
+        });
+    });
+    
 });
 
 app.post('/thankyou', (req, res)=>{
