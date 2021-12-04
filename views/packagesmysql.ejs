@@ -1,6 +1,7 @@
 <!-- packagesmysql.ejs -->
 <!-- Lists availible travel packages generated using data from the travelexperts SQL database -->
 <!-- Author: Marat Nikitin -->
+<!-- Co-author: Daniel Palmer -->
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-30 -->
 
@@ -20,7 +21,6 @@
 		<link rel="stylesheet" type="text/css" href="packages.css" />	
 		<link rel="stylesheet" href="headfoot.css">
 		<title> Packages - Travel Agents </title>
-		<script src="dateFormatting.js"></script>
 	</head>
 	<body>
 
@@ -46,14 +46,21 @@
 				<tr>
 				<% for (let key in customer) { %>
 					<%  if (customer.hasOwnProperty(key)) { %>
-						<td><%= customer[key] %></td>
+						<% if (Array.isArray(customer[key])){ %>
+							<td style = "color: <%= customer[key][1]%>; font-weight: <%= customer[key][2] %>;">
+								<%= customer[key][0]%>
+							</td>							
+						<% } else { %>						
+							<td><%= customer[key] %></td>
+						<% } %>
 					<%	} %>
 				<% } %>
 				<td>
 					<a href="/order"><button> Order This Package </button></a>
 				</td>
 				</tr>
-			<% } %>
+				
+				<% } %>
 		</table>
 		</div>
 		<br> <br> <br> <br> <br>
