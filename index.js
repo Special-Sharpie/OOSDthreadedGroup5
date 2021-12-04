@@ -238,16 +238,21 @@ app.get("/getpackages", (req, res)=>{
 
     var conn = getConnection();
     conn.connect((err)=>{
-        if (err) throw err;
-        
+        if (err) throw err;   
         var sql = "SELECT PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice FROM packages";
         /* This query ensures that that first & last columns (Package ID & Agency's Commission) are not displayed on the Packages page.
             Normally, travel agencies do not disclose their commission openly and hide it inside the package's total price. */ 
         conn.query(sql, (err, results, fields)=>{
             if (err) throw err;
+            for (var i = 0; i < results.length; i++){
+                if ( dayjs(results[i].PkgEndDate).diff(dayjs(), 'days') <= 0){
+                   results.splice(i, 1); /* Here we removed rows with expired packages */
+                };
+            };
+            /* In the block below we set customized date-time format for humans */
             results.forEach((result) => {
-                result.PkgStartDate = dateFormatting.dateFormatting(result.PkgStartDate); 
-                result.PkgEndDate = dateFormatting.dateFormatting(result.PkgEndDate); 
+                result.PkgStartDate = dateFormatting.formattedDate(result.PkgStartDate); 
+                result.PkgEndDate = dateFormatting.formattedDate(result.PkgEndDate); 
             });
             res.render("packagesmysql", { result: results }); 
             /* packagesmysql.ejs file is used to display the information 
@@ -269,7 +274,7 @@ app.get('/order', (req, res)=>{
     res.redirect('/login?path=' + pathRequested)
 })
 
-
 app.use((req, res)=>{
     res.status(404).render("404")
 });
+
