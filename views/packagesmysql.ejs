@@ -18,6 +18,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="index.css">		 
 		<link rel="stylesheet" type="text/css" href="packages.css" />	
+		<link rel="stylesheet" href="headfoot.css">
 		<title> Packages - Travel Agents </title>
 		<script src="dateFormatting.js"></script>
 	</head>
@@ -25,8 +26,8 @@
 
 		<%- include("header") %>
 
-		<div id = "div7"> Our best packages for you: </div>
-		
+		<h1> Our best packages for you: </h1>
+		<div class="main-content">
 		<!-- A table with data from the travelexperts MySQL database is displayed: -->
 		<table>
 			<!-- A row with customised column header names is created and displayed: -->
@@ -54,7 +55,7 @@
 				</tr>
 			<% } %>
 		</table>
-		
+		</div>
 		<br> <br> <br> <br> <br>
 
 		<%- include("footer")%>

@@ -18,11 +18,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="headfoot.css">
     <title>Best Venture - Travel Experts</title>
 </head>
 <body>
     <%- include('header') %> <br />
-    <article>
+    <div class="main-content">
         <div>
             <form method="post">
                 <label for="username">Username</label>
@@ -38,6 +39,6 @@
             <h2>Don't have an account?</h2>
             <a href="/register"><button>Register</button></a>
         </div>
-    </article>
+    </div>
     <%- include('footer') %> 
 </body>

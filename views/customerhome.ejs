@@ -18,16 +18,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="headfoot.css">
     <title>Best Venture - Travel Experts</title>
 </head>
 <body>
-    <% for (var key in customer){ %> 
-        <p> <%= customer[key] %>  </p>
-    <% }; %> 
+    <div class="main-content">
+        <% for (var key in customer){ %> 
+            <p> <%= customer[key] %>  </p>
+        <% }; %> 
 
-        <% orders.forEach((order)=>{ %> 
-            <% for (var key in order){ %> 
-                <p> <%= order[key] %>  </p>
-            <% }; %>
-        <% }) %> 
+            <% orders.forEach((order)=>{ %> 
+                <% for (var key in order){ %> 
+                    <p> <%= order[key] %>  </p>
+                <% }; %>
+            <% }) %> 
+    </div>
 </body>
