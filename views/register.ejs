@@ -32,101 +32,97 @@
     </script>
     <title>Travel Experts - Register</title>
 </head>
-<body id="body">
+<body>
     <%- include('header') %>
-    <article class="push-down">
+
         <div class="main-content">
-            <hr />
             <section>
+                <h1>Register Here!</h1>
                 <form id="registerform" method="post" action="/thankyou">
-                    <div id="registerForm" class="registercontent">
-                        <label for="fname">First Name</label> 
-                        <br />
-                        <input type="text" name="fname" onfocus="revealDescription('firstname')" onblur="hideDescription('firstname')" placeholder="First Name" />
-                        <span id="firstname" style="visibility: hidden;">Customer Firstname</span>
-                        <br />
-                        <label for="lname">Last Name</label>
-                        <br />
-                        <input type="text" name="lname" onfocus="revealDescription('lastname')" onblur="hideDescription('lastname')" placeholder="Last Name" />
-                        <span id="lastname" style="visibility: hidden;">Customer Lastname</span>
-                        <br />
-                        <label for="password">Password</label>
-                        <br />
-                        <input type="password" name="password" onfocus="revealDescription('password')" onblur="hideDescription('password')" />
-                        <span id="password" style="visibility: hidden;">Create a secure account password</span>
-                        <br />
-                        <label for="cpassword">Confirm Password</label>
-                        <br />
-                        <input type="password" name="cpassword" onfocus="revealDescription('cpassword')" onblur="hideDescription('cpassword')" />
-                        <span id="cpassword" style="visibility: hidden;">Password and Confirm Password must match</span>
-                        <br />
-                        <label for="email">Email</label>
-                        <br />
-                        <input type="email" name="email" onfocus="revealDescription('email')" onblur="hideDescription('email')" placeholder="example@domain.ca" />
-                        <span id="email" style="visibility: hidden;">Add an email for account management</span>
-                        <br />
-                        <label for="phonenumber">Phone Number</label>
-                        <br />
-                        <input type="text" name="phonenumber" onfocus="revealDescription('phone')" onblur="hideDescription('phone')" placeholder="403-555-5555" />
-                        <span id="phone" style="visibility: hidden;">Add a phone number for contact</span>
-                        <br />
-                        <label for="busphone">Business Phone Number</label>
-                        <br />
-                        <input type="text" name="busphone" onfocus="revealDescription('busphone')" onblur="hideDescription('busphone')" placeholder="403-555-5555" />
-                        <span id="busphone" style="visibility: hidden;">Add a business phone number, enter your above phone number if dont have one</span>
-                        <br />
-                        <label for="address">Address</label>
-                        <br />
-                        <input type="text" name="address" onfocus="revealDescription('address')" onblur="hideDescription('address')" placeholder="Adress" class="registerinput" />
-                        <span id="address" style="visibility: hidden;">Customer Address</span>
-                        <br />
-                        <label for="city">City </label>
-                        <span>- We use this information to gauge flight costs and sales tax to maximize trip value!</span>
-                        <br />
-                        <input type="text" name="city" onfocus="revealDescription('city')" onblur="hideDescription('city')" placeholder="City" />
-                        <span id="city" style="visibility: hidden;">Customer City</span>
-                        <br />
-                        <label for="province">Province</label>
-                        <br />
-                        <select name="province" onfocus="revealDescription('province')" onblur="hideDescription('province')" >
-                            <option></option>
-                            <option>AB</option>
-                            <option>SK</option>
-                            <option>CA</option>
-                        </select>
-                        <span id="province" style="visibility: hidden;">Customer Province</span>
-                        <br />
-                        <label for="country">Country</label>
-                        <br />
-                        <select name="country" onfocus="revealDescription('country')" onblur="hideDescription('country')" >
-                            <option></option>
-                            <option>CA</option>
-                            <option>US</option>
-                        </select>
-                        <span id="country" style="visibility: hidden;">Customer Country</span>
-                        <br />
-                        <label for="postalcode">Postal Code/Zip Code</label>
-                        <br />
-                        <input type="text" name="postalcode" onfocus="revealDescription('postal')" onblur="hideDescription('postal')" placeholder="Q1Q 1Q1/55555-4444" />
-                        <span id="postal" style="visibility: hidden;">Customer Postal Code/Zip Code</span>
-                        <br />
-                        <label for="agent">Did one of our Agents assist you?</label>
-                        <br />
-                        <select name="agent" onfocus="revealDescription('agent')" onblur="hideDescription('agent')">
-                            <option></option>
-                            <% agents.forEach((agent)=>{ %>
-                                <option><%= agent.AgtFirstName %> <%= agent.AgtLastName %></option>
-                            <% }) %> 
-                        </select>
-                        <span id="agent" style="visibility: hidden;">Select the name of the agent who assited you</span>
-                        <input type="submit" value="Send" class="formsubmit" onclick="return validate()" />
-                        <input type="reset" value="Clear" class="formsubmit" onclick="return confirm('Are you sure you want clear all values from all fields?')" />
-                    </div>
+                    <table>                        
+                        <tr>
+                            <td class="large"><label for="fname">First Name</label> </td>
+                            <td class="large"><input type="text" name="fname" onfocus="revealDescription('firstname')" onblur="hideDescription('firstname')" placeholder="First Name" /></td>
+                            <td class="small"><span id="firstname" style="visibility: hidden;">Customer Firstname</span></td>
+
+                            <td class="large"><label for="lname">Last Name</label></td>
+                            <td class="large"><input type="text" name="lname" onfocus="revealDescription('lastname')" onblur="hideDescription('lastname')" placeholder="Last Name" /></td>
+                            <td class="small"><span id="lastname" style="visibility: hidden;">Customer Lastname</span></td>
+                        </tr>
+                        <tr>
+                            <td class="large"><label for="password">Password</label></td>
+                            <td class="large"><input type="password" name="password" onfocus="revealDescription('password')" onblur="hideDescription('password')" /></td>
+                            <td class="small"><span id="password" style="visibility: hidden;">Create a secure account password</span></td>
+
+                            <td class="large"><label for="phonenumber">Phone Number</label></td>
+                            <td class="large"><input type="text" name="phonenumber" onfocus="revealDescription('phone')" onblur="hideDescription('phone')" placeholder="403-555-5555" /></td>
+                            <td class="small"><span id="phone" style="visibility: hidden;">Add a phone number for contact</span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="large"><label for="cpassword">Confirm Password</label></td>
+                            <td class="large"><input type="password" name="cpassword" onfocus="revealDescription('cpassword')" onblur="hideDescription('cpassword')" /></td>
+                            <td class="small"><span id="cpassword" style="visibility: hidden;">Password and Confirm Password must match</span></td>
+
+                            <td class="large"><label for="busphone">Business Phone Number</label></td>
+                            <td class="large"><input type="text" name="busphone" onfocus="revealDescription('busphone')" onblur="hideDescription('busphone')" placeholder="403-555-5555" /></td>
+                            <td class="small"><span id="busphone" style="visibility: hidden;">Add a business phone number, enter your above phone number if dont have one</span></td>
+                            <tr>
+                                <td class="large"><label for="email">Email</label></td>
+                                <td class="large"><input type="email" name="email" onfocus="revealDescription('email')" onblur="hideDescription('email')" placeholder="example@domain.ca" /></td>
+                                <td class="small"><span id="email" style="visibility: hidden;">Add an email for account management</span></td>
+                            </tr>
+                        </tr><tr><td style="height: 2em;"></td></tr>
+                        <tr>
+                            <td class="large"><label for="address">Address</label></td>
+                            <td class="large"><input type="text" name="address" onfocus="revealDescription('address')" onblur="hideDescription('address')" placeholder="Adress" class="registerinput" /></td>
+                            <td class="small"><span id="address" style="visibility: hidden;">Customer Address</span></td>
+
+                            <td class="large"><label for="city">City </label></td>
+                            <td class="large"><input type="text" name="city" onfocus="revealDescription('city')" onblur="hideDescription('city')" placeholder="City" /></td>
+                            <td class="small"><span id="city" style="visibility: hidden;">Customer City</span></td>
+                        </tr>
+                        <tr>
+                            <td class="large"><label for="province">Province</label></td>
+                            <td class="large"><select name="province" onfocus="revealDescription('province')" onblur="hideDescription('province')" >
+                                <option></option>
+                                <option>AB</option>
+                                <option>SK</option>
+                                <option>CA</option>
+                            </select></td>
+                            <td class="small"><span id="province" style="visibility: hidden;">Customer Province</span></td>
+
+                            <td class="large"><label for="country">Country</label></td>
+                            <td class="large"><select name="country" onfocus="revealDescription('country')" onblur="hideDescription('country')" >
+                                <option></option>
+                                <option>CA</option>
+                                <option>US</option>
+                            </select></td>
+                            <td class="small"><span id="country" style="visibility: hidden;">Customer Country</span></td>
+                        </tr>
+                        <tr>
+                            <td class="large"><label for="postalcode">Postal Code/Zip Code</label></td>
+                            <td class="large"><input type="text" name="postalcode" onfocus="revealDescription('postal')" onblur="hideDescription('postal')" placeholder="Q1Q 1Q1/55555-4444" /></td>
+                            <td class="small"><span id="postal" style="visibility: hidden;">Customer Postal Code/Zip Code</span></td>
+
+                            <td class="large"><label for="agent">Did one of our Agents assist you?</label></td>
+                            <td class="large"><select name="agent" onfocus="revealDescription('agent')" onblur="hideDescription('agent')">
+                                <option></option>
+                                <option>None</option>
+                                <% agents.forEach((agent)=>{ %>
+                                    <option><%= agent.AgtFirstName %> <%= agent.AgtLastName %></option>
+                                <% }) %> 
+                            </select></td>
+                            <td class="small"><span id="agent" style="visibility: hidden;">Select the name of the agent who assited you</span></td>
+                        </tr>
+                        <tr>
+                            <td></td><td class="large"><input type="reset" value="Clear" class="formsubmit btn" onclick="return confirm('Are you sure you want clear all values from all fields?')" /></td>
+                            <td class="large"></td><td></td><td><input type="submit" value="Send" class="formsubmit btn" onclick="return validate()" /></td>
+                        </tr>
+                    </table>
                 </form>
             </section>
-            <hr />
         </div>
-    </article>
-        <%- include('footer') %> 
+    <%- include('footer') %> 
 </body>
 </html>

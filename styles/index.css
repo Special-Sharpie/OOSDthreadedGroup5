@@ -27,21 +27,35 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-auto-flow: row;
     line-height: 1.6;
-    max-width: 90%;
+    max-width: 80%;
     gap: 1em;
     padding-bottom: 3em;
+    min-height: 75vh;
 }
 
-.main-content img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 20em;
+.main-content .grid {
+    max-width: 100%;
+    margin: auto;
 }
 
 .push-down {
     margin-top: 1em;
+}
+
+.btn {
+	font-size: 0.9rem;
+	border-radius: 6px;
+	background-color: var(--green);
+	font-weight: 600;
+	color:var(--yellow);
+	transition: 0.3s;
+	cursor: pointer;
+    min-width: 8em;
+    min-height: 1.5em;
+}
+
+.btn:hover{
+	background-color: var(--charcoal);
 }
 
 @media (min-width:55em) {
@@ -49,16 +63,14 @@ h1, h2, h3, h4, h5, h6 {
 	.main-content {
 		grid-auto-flow: column;
 		margin: auto;
-        padding: 0em 0em 5em 5em;
-        
 	}
     
-    .main-content div {
+    .main-content .grid {
         max-width:40em;
-        margin:auto;
+        margin:0 auto;
     }
-
-    .main-content img{
-        padding-right: 10em;
+    .grid__img {
+        max-width: 80% !important;
     }
+    
 }
