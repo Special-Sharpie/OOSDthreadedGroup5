@@ -131,7 +131,9 @@ app.post('/login', (req, res)=>{
                         });
                     });
                 }else{
+                    var pathRequested = encodeURIComponent(`${req.url}`);
                     res.send('<script>alert("Username and/or password are incorrect!"); window.location.href = "/login"; </script>');
+                    res.redirect('/login?path=' + pathRequested)
                 }
             });
         });
