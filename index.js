@@ -64,11 +64,6 @@ app.get('/login', (req, res)=>{
 app.get('/thankyou', (req, res)=>{
     res.render("thankyou")
 });
-/*
-app.get('/customerhome', (req, res)=>{
-    res.render("customerhome")
-});
-*/
 
 // Serves the login page when accessing customerhome, and orders pages.
 // Pulls the path from the pages above, and serves pages accordingly

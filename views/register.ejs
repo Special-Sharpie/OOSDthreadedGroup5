@@ -108,7 +108,6 @@
                             <td class="large"><label for="agent">Did one of our Agents assist you?</label></td>
                             <td class="large"><select name="agent" onfocus="revealDescription('agent')" onblur="hideDescription('agent')">
                                 <option></option>
-                                <option>None</option>
                                 <% agents.forEach((agent)=>{ %>
                                     <option><%= agent.AgtFirstName %> <%= agent.AgtLastName %></option>
                                 <% }) %> 
