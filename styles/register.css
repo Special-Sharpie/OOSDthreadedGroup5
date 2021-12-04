@@ -1,0 +1,57 @@
+label {
+margin-right: 1em;
+}
+
+input, button, select {
+    height: 1.3em;
+}
+
+span {
+    display: none;
+}
+
+table {
+    border: 0;
+    width: 85%;
+    margin:auto;
+}
+
+table tr {
+    display: block;
+    line-height: 2em;
+}
+
+table td {
+    display: block;
+    text-align: right;
+}
+
+.small {
+    width: 1px;
+}
+
+table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+    }
+
+  @media (min-width:55em) {
+
+    table {
+        border-collapse: collapse;
+
+        display: table;
+        }
+
+        table td {
+            display: table-cell;
+        }
+        
+        table tr {
+            display: table-row;
+        }
+
+        input, button, select {
+            float:left;
+        }
+}
