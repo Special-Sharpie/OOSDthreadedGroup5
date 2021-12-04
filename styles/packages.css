@@ -14,48 +14,37 @@
 
 table {
 	color: var(--charcoal);
-	text-align: left;
-	font-size: 1.2rem;
 	border-collapse: collapse;
-	width: 96%;
-	margin-left: 2%;
 	text-align: center;
+	max-width: 85%;
+	margin: auto;
 }
   
 td, th {
 	border: 2px solid var(--charcoal);
-	padding: 0.5em;
-	padding-top: 1em; 
-	padding-bottom: 1em;
+	padding: .7em .5em .7em .5em;
   }
 
 td {
-	background-color:  var(--yellow);
+	background-color:  var(--orange);
 }
 
 th {
 	text-align: center;
-	background-color: var(--yellow);
-}
-
-/* For the header of a list of packages */
-#div7 {
-	color: var(--charcoal);
-	text-align: center;
-	font-size: 2rem;
-	font-weight: bold;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	background-color: var(--sienna);
+	font-size: 1.1em;
+	padding: 0;
 }
 
 button {
 	font-size: 0.9rem;
 	border-radius: 6px;
-	background-color: var(--orange);
-	font-weight: bold;
+	background-color: var(--green);
+	font-weight: 600;
+	color:var(--yellow);
+	transition: 0.3s;
 }
 
-/* Trying to get alternating colours - does not work yet */ 
-tr:nth-child(odd) {
-	background-color: var(--green);
+button:hover {
+	background-color: var(--charcoal);
 }

@@ -14,30 +14,6 @@ body {
     margin: 0;
 }
 
-nav {
-    background-color: var(--charcoal);
-    position:fixed;
-    left:0px;
-    top:0px;
-    width:100%;
-    margin:auto;
-    padding: .5em 0em .5em 0em;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    z-index: 2;
-}
-
-nav a {
-    margin: 0% 5% 0% 5%;
-    float:right;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-decoration: none;
-}
-nav a:hover {
-    color: var(--sienna);
-}
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Montserrat', sans-serif;
     color: var(--charcoal);
@@ -46,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
 }
 
-article {
+.main-content {
     margin: auto;
     display: grid;
     grid-auto-flow: row;
@@ -56,7 +32,7 @@ article {
     padding-bottom: 3em;
 }
 
-article img {
+.main-content img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -64,49 +40,25 @@ article img {
     max-width: 20em;
 }
 
-footer {
-    margin: auto;
-    display: grid;
-    grid-auto-flow: row;
-    line-height: 1.6;
-    gap: 1em;
-    background-color: var(--charcoal);
-    padding: 0px 10% 0px 10%;
-    color: var(--orange);
-}
-
-footer a {
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-decoration: none;
-	font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-}
-
-footer a:hover {
-    color: var(--sienna);
+.push-down {
+    margin-top: 1em;
 }
 
 @media (min-width:55em) {
 
-	article {
+	.main-content {
 		grid-auto-flow: column;
 		margin: auto;
         padding: 0em 0em 5em 5em;
         
 	}
     
-    article div {
+    .main-content div {
         max-width:40em;
         margin:auto;
     }
 
-    article img{
+    .main-content img{
         padding-right: 10em;
-    }
-
-    footer {
-        grid-auto-flow: column;
-		margin: auto;
     }
 }
