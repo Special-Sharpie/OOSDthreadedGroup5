@@ -20,6 +20,8 @@
 		<link rel="stylesheet" href="index.css">		 
 		<link rel="stylesheet" type="text/css" href="packages.css" />	
 		<link rel="stylesheet" href="headfoot.css">
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+		<script src="https://kit.fontawesome.com/333efb0c4e.js" crossorigin="anonymous"></script>
 		<title> Packages - Travel Agents </title>
 	</head>
 	<body>
@@ -29,7 +31,7 @@
 		<h1> Our best packages for you: </h1>
 		<div class="main-content">
 		<!-- A table with data from the travelexperts MySQL database is displayed: -->
-		<table>
+		<table class="table">
 			<!-- A row with customised column header names is created and displayed: -->
 			<% let tableHeaders = ["Package Name", "Start Date", "End Date", "Description", 
 			"Package Price, CAD", "Order a Package"];%> <!-- Created an array of table headers here, the last column 

@@ -92,6 +92,9 @@ app.post('/login', (req, res)=>{
                         var customerData = results;
                         con.query(customerOrders, (err, results)=>{
                             if (err) throw err;
+                            results.forEach((result) => {
+                                result.BookingDate = dateFormatting.formattedDateCust(result.BookingDate); 
+                            });
                             res.render("customerhome", {customer: customerData[0], orders: results})
                             con.end((err)=>{
                                 if (err) throw err;
@@ -136,6 +139,9 @@ app.post('/login', (req, res)=>{
         });
     };
 });
+
+
+
 
 app.post('/orderPlaced', (req, res)=>{
     const con = mysql.createConnection({
