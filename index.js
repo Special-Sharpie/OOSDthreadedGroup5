@@ -129,6 +129,9 @@ app.post('/login', (req, res)=>{
                                 };
                             });
                             res.render("customerhome", {customer: customerData[0], orders: results})
+                            con.end((err)=>{
+                                if (err) throw err;
+                            });
                         });
                     });
                 }else{
