@@ -1,3 +1,11 @@
+/**
+ * carousel.js
+ * This script helps displaying images of the index page 
+ * Author: Justin Molnar
+ * CPRG 207 - Threaded Project
+ * 2021-11-30
+ */
+
 const track = document.querySelector('.carousel__track');
 const slides = Array.from(track.children);
 const nextButton = document.querySelector('.carousel__button--right');

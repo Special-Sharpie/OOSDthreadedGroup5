@@ -1,3 +1,11 @@
+/**
+ * addpassworld.js
+ * This page is solely for testing/database modification, and will not be in the final 
+ * Author: Daniel Palmer
+ * CPRG 207 - Threaded Project
+ * 2021-11-30
+ */
+
 const mysql = require("mysql")
 
 //this page is solely for testing/database modification, and will not be in the final

@@ -1,9 +1,9 @@
 /**
- * Index.js
- * Serves as the main file for our project.
+ * readform.js
+ * Form data validation scripts are here
  * Author: Daniel Palmer
  * CPRG 207 - Threaded Project
- * 2021-11-29
+ * 2021-12-01
  */
 
 //Pre-defined regex expressions for value validation
