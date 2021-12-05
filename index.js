@@ -59,19 +59,20 @@ app.get('/contact', (req, res)=>{
     con.connect((err)=>{
         if (err) throw err;
         
-        var sql="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents";                       //fetching data brom db
-        con.query(sql,(err,result)=>{
+        var agentQuery="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents";                       //fetching data brom db
+        con.query(agentQuery, (err, results)=>{
             if(err)throw err;
-
-            res.render("contact",{result: result})
-            con.end((err)=>{
-                if (err) throw err;
+            var agentData = results;
+            var agencyQuery = "SELECT * FROM agencies"
+            con.query(agencyQuery, (err, results)=>{
+                if(err)throw err;
+                res.render("contact",{result: agentData, agencies: results});
+                con.end((err)=>{
+                    if (err) throw err;
+                });
             });
-
         });
-
     });
-    
 });
 
 app.get('/packages', (req, res)=>{
@@ -109,17 +110,25 @@ app.post('/login', (req, res)=>{
                     con.query(customerQuery, (err, results)=>{
                         if (err) throw err;
                         delete results[0].password
-                        var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
+                        var agentName = `SELECT AgtFirstName, AgtLastName FROM agents WHERE AgentId="${results[0].AgentId}"`
                         var customerData = results;
+                        con.query(agentName, (err, results)=>{
+                            customerData[0].AgentId = `${results[0].AgtFirstName} ${results[0].AgtLastName}`
+                        });
+                        var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
                         con.query(customerOrders, (err, results)=>{
                             if (err) throw err;
                             results.forEach((result) => {
-                                result.BookingDate = dateFormatting.formattedDateCust(result.BookingDate); 
+                                result.BookingDate = dateFormatting.formattedDateCust(result.BookingDate);
+                                if (result.TripTypeId == 'B'){
+                                    result.TripTypeId = "Business"
+                                }else if (result.TripTypeId == 'G'){
+                                    result.TripTypeId = "Group"
+                                }else if (result.TripTypeId == 'L'){
+                                    result.TripTypeId = "Leisure"
+                                };
                             });
                             res.render("customerhome", {customer: customerData[0], orders: results})
-                            con.end((err)=>{
-                                if (err) throw err;
-                            });
                         });
                     });
                 }else{
