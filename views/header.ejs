@@ -1,11 +1,28 @@
 <nav>
-    <ul class="nav">
-        <img class="logo" src="logo2.png">
-        <li><a class="nav__link" href="/">Home Page</a></li>
+    <img class="logo" src="logo2.png">
+    <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav" id="navul">
+        <li><a class="nav__link" href="/">Home</a></li>
         <li><a class="nav__link" href="/getpackages">Packages</a></li>
-        <li><a class="nav__link" href="/customerhome">My Profile</a></li>
+        <li><a class="nav__link" href="/customerhome">Profile</a></li>
         <li><a class="nav__link" href="/register">Register</a></li>
-        <li><a class="nav__link" href="/contact">Contact Us</a></li>
+        <li><a class="nav__link" href="/contact">Contact</a></li>
+        <!-- <li>
+            <a class="icon--head" href="https://twitter.com" target="_blank"><i class="fab fa-twitter-square icon"></i></a>
+            <a class="icon--head" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-square icon"></i></a>
+            <a class="icon--head" href="https://instagram.com" target="_blank"><i class="fab fa-instagram-square icon"></i></a>
+        </li> -->
     </ul>
 </nav>
 <br><br>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navul = document.getElementById('navul');
+
+    hamburger.addEventListener('click', () => {
+        navul.classList.toggle('show');
+    });
+</script>

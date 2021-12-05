@@ -15,6 +15,10 @@
  function dateFormatting(requestedDate){
      return dayjs(requestedDate).format('dddd MMMM D, YYYY, h:mm a');
  };
+//  Below is the function for dates in customer home
+function dateFormattingCust(requestedDate){
+   return dayjs(requestedDate).format('MMM D, YYYY, h:mm a');
+};
  
  /* Below we set different text colours and boldness for dates based on if they 
       are in the future (green colour) or the past (bold red color) */
@@ -37,4 +41,8 @@
  
  exports.formattedDate = (requestedDate)=>{
    return [dateFormatting(requestedDate), dateColour(requestedDate)[0], dateColour(requestedDate)[1]];
+ };
+
+ exports.formattedDateCust = (requestedDate)=>{
+   return dateFormattingCust(requestedDate);
  };

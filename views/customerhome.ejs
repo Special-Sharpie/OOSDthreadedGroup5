@@ -19,21 +19,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="headfoot.css">
+    <link rel="stylesheet" href="customerhome.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="https://kit.fontawesome.com/333efb0c4e.js" crossorigin="anonymous"></script>
     <title>Best Venture - Travel Experts</title>
 </head>
 <body>
     <%- include('header') %>
-    <div class="main-content">
-        <div class="grid">
-            <% for (var key in customer){ %> 
-                <p> <%= customer[key] %>  </p>
-            <% }; %> 
+    <h2>
+        Welcome Back <%= customer.CustFirstName %>!
+    </h2>
 
+    <div class="main-content">
+        
+        <div class="grid">
+            <table>
+                <tr>
+                    <td class="label"><b>Name:</b></td><td><%= customer.CustFirstName %> <%= customer.CustLastName %> </td>
+                    <td></td><td class="label"><b>Customer ID:</b></td><td><%= customer.CustomerId %></td>
+                </tr>
+                <!-- Blank Row --><tr><td style="height: 2em;"></td></tr>
+                <tr>
+                    <td class="label"><b>Address:</b></td><td><%= customer.CustAddress %></td>
+                    <td></td><td class="label"><b>Postal Code:</b></td><td><%= customer.CustPostal %></td>
+                </tr>
+                    <td></td>
+                    <td><%= customer.CustCity %> <%= customer.CustProv %></td>
+                </tr>
+                <tr>
+
+                    <td class="label"><b>Home Phone:</b></td><td>(<%= customer.CustHomePhone.slice(0, 3) %>) <%= customer.CustHomePhone.slice(3, 6) %>-<%= customer.CustHomePhone.slice(6, 10) %></td>
+                    <td></td><td class="label"><b>Business Phone:</b></td><td>(<%= customer.CustBusPhone.slice(0, 3) %>) <%= customer.CustBusPhone.slice(3, 6) %>-<%= customer.CustBusPhone.slice(6, 10) %></td>
+                </tr>
+                <!-- Blank Row --><tr><td style="height: 2em;"></td></tr>
+                <tr>
+                    <td class="label"><b>Email:</b></td><td><%= customer.CustEmail %></td>
+                    <td></td><td class="label"><b>Agent:</b></td><td><%= customer.AgentId %></td>
+                </tr>
+            </table>
+
+            <h2>
+                Your Bookings Info:
+            </h2>
+            
+            <div class="grid">
+            
                 <% orders.forEach((order)=>{ %> 
-                    <% for (var key in order){ %> 
-                        <p> <%= order[key] %>  </p>
-                    <% }; %>
+                    <table>
+                    <tr>
+                        <td class="label"><b>Booking ID:</b></td><td><%= order.BookingId %></td>
+                        <td class="label"><b>Booking Number:</b></td><td><%= order.BookingNo %></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><b>Booked On:</b></td><td style="width:25em"><%= order.BookingDate %></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><b>Travelers:</b></td><td><%= order.TravelerCount %></td>
+                        <td class="label"><b>Trip Type:</b></td><td><%= order.TripTypeId %></td>
+                    </tr>
+                </table>
+                <hr>
                 <% }) %> 
+           
+        </div>
         </div>
     </div>
     <%- include('footer') %>
