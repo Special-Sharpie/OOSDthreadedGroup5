@@ -24,7 +24,8 @@
 <body>
     <%- include('header') %> <br />
     <div class="main-content">
-        <div>
+        <div class="grid">
+            <h2>Login</h2>
             <form method="post">
                 <label for="username">Username</label>
                 <br />
@@ -34,10 +35,12 @@
                 <br />
                 <input type="password" name="password" placeholder="Password"/>
                 <br />
-                <button>Log In</button>
+                <button class="btn">Log In</button>
             </form>
+        </div>
+        <div class="grid">
             <h2>Don't have an account?</h2>
-            <a href="/register"><button>Register</button></a>
+            <a href="/register"><button class="btn">Register</button></a>
         </div>
     </div>
     <%- include('footer') %> 

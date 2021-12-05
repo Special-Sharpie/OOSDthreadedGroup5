@@ -77,7 +77,7 @@
     padding: 0 30px 0 30px;
 }
 .carousel__button--cta:hover {
-    background-color: rgba(244, 162, 97, 1.00);
+    background-color: rgba(244, 162, 97, 0.9);
 }
 
 .carousel__button--cta h2 {
