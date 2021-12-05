@@ -50,7 +50,28 @@ app.get('/register', (req, res)=>{
 });
 
 app.get('/contact', (req, res)=>{
-    res.render("contact")
+    const con = mysql.createConnection({
+        host: "localhost",
+		user: "group5",
+		password: "pass",
+		database: "travelexperts"
+    });
+    con.connect((err)=>{
+        if (err) throw err;
+        
+        var sql="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents";                       //fetching data brom db
+        con.query(sql,(err,result)=>{
+            if(err)throw err;
+
+            res.render("contact",{result: result})
+            con.end((err)=>{
+                if (err) throw err;
+            });
+
+        });
+
+    });
+    
 });
 
 app.get('/packages', (req, res)=>{
