@@ -14,8 +14,10 @@
 
 .logo {
     max-height: 1.5em;
-    padding: .2em 0 0 1em;
+    padding: .22em 0 .22em 5%;
     margin: 0;
+    float:left
+
 }
 
 nav {
@@ -24,17 +26,42 @@ nav {
     left:0px;
     top:0px;
     width:100%;
-    margin:auto;
-    padding: .5em 0em .5em 0em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     z-index: 2;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .22em;
+    flex-wrap: wrap;
+
 }
 
-nav li {
-    display: inline;
-    float:right;
-    padding: .2em 5% 0 0;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: .22em;
+    width:70%;
+    align-items: center;
+    justify-content: center;
+    display:none;
+    flex-direction: column;
+    margin: auto;
+}
+
+
+.show {
+    display: flex;
+}
+
+
+nav li  {
+    display:inline-block;
+    padding: .22em 3%;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 nav li a {
@@ -47,13 +74,31 @@ nav li a {
 nav a:hover {
     color: var(--sienna);
 }
-nav ul {
-    list-style-type: none;
+.icon--head {
+    font-size: 1.3em;
+    padding:0;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    width: 100%;
-}
+    padding-right: .2em;
+ }
+
+.hamburger {
+    background-color: transparent;
+    border: 0;
+    color: var(--orange);
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding-right: 10%;
+    display: block;
+    transition: 0.3s;
+ }
+
+.hamburger:focus {
+    outline: none;
+ }
+
+ .hamburger:hover {
+     color: var(--sienna);
+ }
 
 /* Footer */
 
@@ -84,7 +129,7 @@ footer p {
     margin: 0;
 }
 
-.icon {
+.icon--foot {
     font-size: 2em;
     padding: .2em .2em;
 }
@@ -95,4 +140,13 @@ footer p {
         grid-auto-flow: column;
 		margin: auto;
     }
+    .hamburger {
+        display: none;
+    }
+
+    nav ul {
+        display:flex;
+        flex-direction: row;
+    }
 }
+
