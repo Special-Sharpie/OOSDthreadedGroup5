@@ -143,8 +143,8 @@ footer p {
 @media (min-width:55em) {
     
     footer {
-        grid-auto-flow: column;
-		margin: auto;
+    grid-auto-flow: column;
+    margin: auto;
     }
     .hamburger {
         display: none;

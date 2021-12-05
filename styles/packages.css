@@ -25,7 +25,7 @@ td, th {
 	padding: .7em .5em .7em .5em;
   }
 
-td {
+tr {
 	background-color:  var(--orange);
 }
 
@@ -34,4 +34,8 @@ th {
 	background-color: var(--sienna);
 	font-size: 1.1em;
 	padding: 0;
+}
+
+tr:nth-child(even) {
+	background-color: #f5ab71;
 }
