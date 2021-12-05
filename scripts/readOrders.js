@@ -1,3 +1,11 @@
+/**
+ * readOrders.js
+ * Validating data of the Orders form
+ * Author: Daniel Palmer
+ * CPRG 207 - Threaded Project
+ * 2021-12-04
+ */
+
 function validate(){
         var elements = document.getElementById("orderForm").elements;
         var form = document.forms[0]
