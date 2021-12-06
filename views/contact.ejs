@@ -4,56 +4,51 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-29 -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+<%- include('head') %>
     <meta name="description" content="Contact Information of the Travel Experts Agency & Individual Travel Agents">
-    <title>Document</title>
+    <title>Contact Us - Travel Experts</title>
     <link rel="stylesheet" href="contact.css"/>
-    <link rel="stylesheet" href="index.css"/>
-    <link rel="stylesheet" href="headfoot.css">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <script src="https://kit.fontawesome.com/333efb0c4e.js" crossorigin="anonymous"></script>
-    <!--Montserrat and Roboto - Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
-</head>
-<body class="bg">
+<%- include('header') %>
+
+<br>
+    <div class="main-content" style="min-height: 0;">
+    <div class="grid">
     <h3>About Us...</h3>
     <p class="para" >We are one of the leading travel agencies in Alberta. At Travel Experts, we take pride
          in providing our clients with customized services right from planning to conclusion of your trips
           including rescheduling and documentation. For business or pleasure, we take pride in providing you
-           with the deals in market.Check out our exciting <a href="rform.html">packages</a>. we guarantee that you can  
+           with the deals in market.Check out our exciting <a href="brokenlink">packages</a>. we guarantee that you can  
            save your money and time and focus on more important aspects of your travel.We guarantee that
          you save money and time and focus on 
-        more important aspects of your travel. <a href="rform.html">Register</a> with us 
+        more important aspects of your travel. <a href="register">Register</a> with us 
         so that you get our top deals.</p>
-    </p>
-    <h3>Our Location</h3>
-        <ul class="add1">
-            <li>145 Spring Medows Manor</li>
-            <li>SW Calgary</li>
-            <li>INN 001</li>
-            <li>Alberta,CANADA</li>
+    </div><div class="grid">
+        <% agencies.forEach((agencies)=>{ %>
+            <h3>Get in contact with our <%= agencies.AgncyCity %>  team!</h3>
+            <ul class="contactlist">
+                <li class="contactlistitem"><span class="contactbody">Call us at (<%= agencies.AgncyPhone.slice(0, 3) %>)-<%= agencies.AgncyPhone.slice(3, 6) %>-<%= agencies.AgncyPhone.slice(6, 10) %></span></li>
+                <!-- Having the email in the webpage is a great way to get your email blasted with spam, but I did not feeling like implementing an email form for a fake email.-->
+                <li class="contactlistitem"><span class="contactbody">Email us at <a href="mailto:customer.service@gatortravels.ca" class="linkcolour">customer.service@gatortravels.ca</a></span></li>
+                <li class="contactlistitem"><span class="contactbody">Visit our office on <%= agencies.AgncyAddress %>, <%= agencies.AgncyCity %> <%= agencies.AgncyProv %>, <%= agencies.AgncyCountry %></span></li>      
+            </ul>
+        <% }); %>
 
-        </ul>
-        <ol>
-            <% for(let agents of result){ %>
-                <li>
-                    <% for(let key in agents){  %>
-                     <%   if(agents.hasOwnProperty(key)){   %>
-                            <li> <%= agents[key] %> </li>
-                      <%  } %>
-                      <%  } %> 
-                    
+</div></div>
+    <div class="main-content">
+    <table>
 
-           <% } %>
-        </ol>
+                    <tr><th colspan="3">Get in Touch</th></tr>
 
-    <a href="#">Up</a>
+
+                    <% result.forEach((result)=>{ %> 
+                    <tr>
+                        <td><%= result.agtFirstName %> <%= result.agtLastName %></td>
+                        <td><%= result.agtBusPhone %></td><td><a style="color:var(--charcoal)" href="mailto:<%= result.AgtEmail %>"><%= result.AgtEmail %></a></td>
+                    </tr>
+                    <% }); %>
+    </table>
+</div>
+    
+        <%- include('footer') %>
 </body>
 </html>

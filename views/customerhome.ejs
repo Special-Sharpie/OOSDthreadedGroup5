@@ -4,31 +4,12 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-29 -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!--Montserrat and Roboto - Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--  <link rel="icon" href="gator.png" /> --> 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This metadata below (description & keywords) is used for SEO: it's not seen by users but essential for search engines -->
-    <meta name="description" content="See your personal and orders info here">
-    <meta name="keywords" content="Vacation, Packages, Holidays, Resort, Travel, Getaway, Tours, Tourism">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="headfoot.css">
+<%- include('head') %>
     <link rel="stylesheet" href="customerhome.css">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <script src="https://kit.fontawesome.com/333efb0c4e.js" crossorigin="anonymous"></script>
-    <title>Best Venture - Travel Experts</title>
-</head>
-<body>
-    <%- include('header') %>
+    <meta name="description" content="See your personal and orders info here">
+    <title>Profile Home - Travel Experts</title>
+<%- include('header') %>
+
     <h2>
         Welcome Back <%= customer.CustFirstName %>!
     </h2>
@@ -36,7 +17,7 @@
     <div class="main-content">
         
         <div class="grid">
-            <table>
+            <table class="bottom-border">
                 <tr>
                     <td class="label"><b>Name:</b></td><td><%= customer.CustFirstName %> <%= customer.CustLastName %> </td>
                     <td></td><td class="label"><b>Customer ID:</b></td><td><%= customer.CustomerId %></td>
@@ -81,7 +62,6 @@
                         <td class="label"><b>Trip Type:</b></td><td><%= order.TripTypeId %></td>
                     </tr>
                 </table>
-                <hr>
                 <% }) %> 
            
         </div>

@@ -4,92 +4,90 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-29 -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!--Montserrat and Roboto - Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+<%- include('head') %>
+	<link rel="stylesheet" href="carousel.css">
+	<meta name="description" content="Find Vacation Packages Here - the Travel Experts agency">
+	<title>Welcome to Travel Experts</title>
+<%- include('header') %>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="gator.png" />
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This metadata below (description & keywords) is used for SEO: it's not seen by users but essential for search engines -->
-    <meta name="description" content="Find Vacation Packages Here - the Travel Experts agency">
-    <meta name="keywords" content="Best Venture, Vacation, Packages, Holidays, Resort, Travel, Getaway, Tours, Tourism">
-    <link rel="stylesheet" href="carousel.css">
-    <link rel="stylesheet" href="headfoot.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <script src="https://kit.fontawesome.com/333efb0c4e.js" crossorigin="anonymous"></script>
-    <title>Best Venture - Travel Experts</title>
-</head>
-<body>
+<div class="carousel">
+	<div class="carousel__track-container">
+		<ul class="carousel__track">
+			<li class="carousel__slide current-slide">
+				<img class="carousel__image" src="hero1.jpg" alt="Marvellous view of Mount Fuji, Japan">
+			</li>
+			<li class="carousel__slide">
+				<img class="carousel__image" src="hero2.jpg" alt="New Year's party on a boat in Cancun, Mexico">
+			</li>
+			<li class="carousel__slide">
+				<img class="carousel__image" src="hero3.jpg" alt="Beautifull cobbled streets in an ancient German city">
+			</li>
+			<li class="carousel__slide">
+				<img class="carousel__image" src="hero4.jpg" alt="Daredevil man enjoying a jump of a lifetime at a tropical waterfall">
+			</li>
+		</ul>
+	</div>
 
-    <%- include('header') %>
+<button class="carousel__button carousel__button--left is-hidden">&#10094;</button>
+<button class="carousel__button carousel__button--right">&#10095;</button>
 
-    <div class="carousel">
-        <div class="carousel__track-container">
-          <ul class="carousel__track">
-            <li class="carousel__slide current-slide">
-              <img class="carousel__image" src="hero1.jpg" alt="Marvellous view of Mount Fuji, Japan">
-            </li>
-            <li class="carousel__slide">
-              <img class="carousel__image" src="hero2.jpg" alt="New Year's party on a boat in Cancun, Mexico">
-            </li>
-            <li class="carousel__slide">
-              <img class="carousel__image" src="hero3.jpg" alt="Beautifull cobbled streets in an ancient German city">
-            </li>
-            <li class="carousel__slide">
-              <img class="carousel__image" src="hero4.jpg" alt="Daredevil man enjoying a jump of a lifetime at a  tropical waterfall">
-            </li>
-          </ul>
-        </div>
-      <button class="carousel__button carousel__button--left is-hidden">
-        &#10094;
-      </button>
-      <button class="carousel__button carousel__button--right">
-        &#10095;
-      </button>
+<a href="getpackages">
+	<button class="carousel__button carousel__button--cta">
+		<p class="hero-btn-text">Explore Asia on your own terms</p>
+		<p style="font-size: 1.2em;"><b>Book Now!</b></p>
+	</button>
+</a>
 
-      <a href="getpackages"><button class="carousel__button carousel__button--cta">
-        <h3 class="hero-btn-text">Explore Asia on your own terms</h3>
-        <h2 style="padding: 0 0 10px 0; margin:0;">Book Now!</h2>
-      </button></a>
+<div class="carousel__nav">
+	<button class="carousel__indicator current-slide"></button>
+	<button class="carousel__indicator"></button>
+	<button class="carousel__indicator"></button>
+	<button class="carousel__indicator"></button>
+</div>
 
-      <div class="carousel__nav">
-        <button class="carousel__indicator current-slide"></button>
-        <button class="carousel__indicator"></button>
-        <button class="carousel__indicator"></button>
-        <button class="carousel__indicator"></button>
-      </div>
-    </div>
-  <br>
-      <div class="main-content">
-        <div class="grid">
-          <h1>Article</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <br /><br />
-              <ul>
-                <li>
-                  Lorem ipsum dolor sit amet
-                </li>
-                <li>
-                  Consectetur adipiscing elit
-                </li>
-                <li>
-                  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                </li>
-              </ul>
-            </div>
-        <div><img class="grid grid__img" style="padding-top: 3em;" src="suitcases.jpg"></div>
-      </div>
-    <%- include("footer")%>
-    <script src="carousel.js"></script>
-</body>
+</div>
+<br>
+<div class="main-content" style="min-height: 0;">
+	<div class="grid">
+		<h1>Welcome to Travel Experts!</h1>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<br /><br />
+		<ul>
+			<li>
+				Lorem ipsum dolor sit amet
+			</li>
+			<li>
+				Consectetur adipiscing elit
+			</li>
+			<li>
+				Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+			</li>
+		</ul>
+	</div>
+		
+	<div>
+		<img class="grid grid__img" style="padding-top: 3em;" src="suitcases.jpg">
+	</div>
+</div>
+
+<div class="main-content" style="min-height: 0;">
+	<div class="grid">
+		<h3>About Us...</h3>
+		<p class="para" >We are one of the leading travel agencies in Alberta. At Travel Experts, we take pride
+			in providing our clients with customized services right from planning to conclusion of your trips
+			including rescheduling and documentation. For business or pleasure, we take pride in providing you
+				with the deals in market.Check out our exciting <a href="getpackages">packages</a>. we guarantee that you can  
+				save your money and time and focus on more important aspects of your travel.We guarantee that
+			you save money and time and focus on 
+			more important aspects of your travel. <a href="register">Register</a> with us 
+			so that you get our top deals.
+		</p>
+	</div>
+</div>
+
+<%- include("footer")%>
+<script src="carousel.js"></script>
+	</body>
 </html>

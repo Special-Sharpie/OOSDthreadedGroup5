@@ -9,6 +9,7 @@
     --green: #2a9d8fff;
     --yellow: #e9c46aff;
     --orange: #f4a261ff;
+    --orange-accent: #f5ab71;
     --sienna: #e76f51ff;
 
     background-color: var(--yellow);
@@ -68,6 +69,13 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: var(--charcoal);
 }
 
+.grid__img {
+    object-fit: cover;
+    max-height: 20em;
+    width:100%
+    
+}
+
 @media (min-width:55em) {
 
 	.main-content {
@@ -80,7 +88,9 @@ h1, h2, h3, h4, h5, h6 {
         margin:0 auto;
     }
     .grid__img {
-        max-width: 80% !important;
+        width: 80%;
+        min-width: 10em;
+        max-height: 100%;
     }
     
 }

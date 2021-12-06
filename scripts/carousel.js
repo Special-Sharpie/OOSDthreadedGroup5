@@ -13,9 +13,9 @@ const prevButton = document.querySelector('.carousel__button--left');
 const dotsNav = document.querySelector('.carousel__nav');
 const dots = Array.from(dotsNav.children);
 const slideWidth = slides[0].getBoundingClientRect().width;
-var heroText = document.querySelector('.hero-btn-text');
+const heroText = document.querySelector('.hero-btn-text');
 
-var heroTextArray = ['Explore Asia on your own terms', 'The New Years experence of a lifetime', 'Euro Train Adventure', 'Paradise on Earth']
+const heroTextArray = ['Explore Asia on your own terms', 'The New Years experence of a lifetime', 'Euro Train Adventure', 'Paradise on Earth']
 
 //Arrange slides next to eachother
 const setSlidePosition = (slide, index) => {
@@ -73,7 +73,6 @@ nextButton.addEventListener('click', e =>{
     updateDots(currentDot, nextDot);
     hideShowArrows (slides, prevButton, nextButton, nextIndex);
     heroText.innerHTML = heroTextArray[nextIndex];
-    
 });
 
 //Move to slide when I click it's dot nav

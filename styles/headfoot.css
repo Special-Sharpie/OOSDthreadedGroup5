@@ -4,17 +4,6 @@
 /* CPRG 207 - Threaded Project */
 /* 2021-11-30 */
 
-:root {
-    --charcoal: #264653ff;
-    --green: #2a9d8fff;
-    --yellow: #e9c46aff;
-    --orange: #f4a261ff;
-    --sienna: #e76f51ff;
-
-    background-color: var(--yellow);
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2rem;
-}
 
 /* Header */
 
@@ -46,8 +35,8 @@ nav {
 nav ul {
     list-style-type: none;
     margin: 0;
-    padding: .22em;
-    width:70%;
+    padding: .22em 0 .22em .5em;
+    width:63%;
     align-items: center;
     justify-content: center;
     display:none;
@@ -63,7 +52,7 @@ nav ul {
 
 nav li  {
     display:inline-block;
-    padding: .22em 3%;
+    padding: .22em 4%;
     color: var(--orange);
     letter-spacing: 0.1em;
     text-decoration: none;

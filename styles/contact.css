@@ -4,6 +4,80 @@
 /* CPRG 207 - Threaded Project */
 /* 2021-12-03 */
 
-.contactlist{
-    list-style-type:none;
+li {
+    list-style-type: none;
 }
+
+table, th, td, tr {
+	display: block;
+	}
+
+/* Hide table headers (but not display: none;, for accessibility) */
+th {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	background-color: var(--sienna);
+	font-size: 1.1em;
+	padding: 0;
+}
+
+table {
+	color: var(--charcoal);
+	border-collapse: collapse;
+	max-width: 100%;
+	margin: auto;
+	border:2px solid var(--charcoal);
+	
+}
+
+tr {
+	background-color:  var(--orange);
+
+    border-collapse: collapse;
+
+}
+
+td {
+	position: relative;
+
+	border-bottom: solid var(--charcoal) 2px;
+}
+
+tr:nth-of-type(even) {
+	background-color: var(--sienna);
+}
+
+
+@media (min-width:55em) {
+
+	table {
+		display:table;
+		max-width: 85%;
+	}
+
+
+
+	td {
+		display:table-cell;
+		position: static;
+		padding: .7em .5em .7em .5em;
+
+	}
+
+	th{
+		padding: 0;
+		display:table-cell;
+		position: static;
+		border-bottom:2px solid var(--charcoal);
+	}
+
+	tr {
+		display:table-row;
+	}
+	tr:nth-child(odd) {
+		background-color: var(--orange-accent);
+	}
+	tr:nth-of-type(even) {background-color: var(--orange);}
+}
+
