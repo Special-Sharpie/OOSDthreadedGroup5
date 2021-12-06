@@ -4,15 +4,6 @@
 /* CPRG 207 - Threaded Project */
 /* 2021-11-30 */
 
-:root {
-	--charcoal: #264653ff;
-	--green: #2a9d8fff;
-	--yellow: #e9c46aff;
-	--orange: #f4a261ff;
-	--sienna: #e76f51ff;
-}
-
-
 table, th, td, tr {
 	display: block;
 	}
@@ -40,9 +31,7 @@ table {
 
 tr {
 	background-color:  var(--orange);
-
     border-collapse: collapse;
-
 }
 
 td {
@@ -63,7 +52,6 @@ td:before {
 	padding-right: 10px;
 	white-space: nowrap;
 	font-weight: 600;
-
 }
 
 td:nth-of-type(1):before { content: "Package Name"; }
@@ -101,7 +89,7 @@ td:nth-of-type(5):before { content: "Package Price, CAD"; }
 		display:table-row;
 	}
 	tr:nth-child(odd) {
-		background-color: #f5ab71;
+		background-color: var(--orange-accent);
 	}
 	tr:nth-of-type(even) {background-color: var(--orange);}
 }

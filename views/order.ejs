@@ -4,38 +4,22 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-12-04 -->
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!--Montserrat and Roboto - Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="icon" href="gator.png" />
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Order vacation packages in here: for the customers of the Travel Experts agency">
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="headfoot.css">
-        <link rel="icon" type="image/x-icon" href="favicon.png">
-        <script src="https://kit.fontawesome.com/333efb0c4e.js" crossorigin="anonymous"></script>
-        <script>
-            function revealDescription(id){
-                document.getElementById(id).style.visibility = 'visible'
-                }
-            function hideDescription(id){
-                document.getElementById(id).style.visibility = "hidden"
+<%- include('head') %>
+    <script>
+        function revealDescription(id){
+            document.getElementById(id).style.visibility = 'visible'
             }
-        </script>
-        <script src="readOrders.js"></script>
-        <title>Best Venture - Travel Experts</title>
-    </head>
-    <body>
-<body>
-    <%- include('header') %>
+        function hideDescription(id){
+            document.getElementById(id).style.visibility = "hidden"
+        }
+    </script>
+
+    <script src="readOrders.js"></script>
+
+    <meta name="description" content="Order vacation packages in here: for the customers of the Travel Experts agency">
+    <title>Place Your Order - Travel Experts</title>
+<%- include('header') %>
+
     <br />
     <br />
     <div class="main-content">
