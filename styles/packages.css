@@ -12,30 +12,97 @@
 	--sienna: #e76f51ff;
 }
 
-table {
-	color: var(--charcoal);
-	border-collapse: collapse;
-	text-align: center;
-	max-width: 85%;
-	margin: auto;
-}
-  
-td, th {
-	border: 2px solid var(--charcoal);
-	padding: .7em .5em .7em .5em;
-  }
 
-tr {
-	background-color:  var(--orange);
-}
+table, th, td, tr {
+	display: block;
+	}
 
+/* Hide table headers (but not display: none;, for accessibility) */
 th {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
 	text-align: center;
 	background-color: var(--sienna);
 	font-size: 1.1em;
 	padding: 0;
 }
 
-tr:nth-child(even) {
-	background-color: #f5ab71;
+table {
+	color: var(--charcoal);
+	border-collapse: collapse;
+	text-align: center;
+	max-width: 100%;
+	margin: auto;
+	border:2px solid var(--charcoal);
+	
 }
+
+tr {
+	background-color:  var(--orange);
+
+    border-collapse: collapse;
+
+}
+
+td {
+	position: relative;
+	padding-left: 50%;
+	border-bottom: solid var(--charcoal) 2px;
+}
+
+tr:nth-of-type(even) {
+	background-color: var(--sienna);
+}
+td:before {
+	position: absolute;
+	/* Top/left values mimic padding */
+	top: 0;
+	left: 6px;
+	width: 45%;
+	padding-right: 10px;
+	white-space: nowrap;
+	font-weight: 600;
+
+}
+
+td:nth-of-type(1):before { content: "Package Name"; }
+td:nth-of-type(2):before { content: "Start Date"; }
+td:nth-of-type(3):before { content: "End Date"; }
+td:nth-of-type(4):before { content: "Description"; }
+td:nth-of-type(5):before { content: "Package Price, CAD"; }
+
+
+
+@media (min-width:55em) {
+
+	table {
+		display:table;
+		max-width: 85%;
+	}
+
+
+
+	td {
+		display:table-cell;
+		position: static;
+		padding: .7em .5em .7em .5em;
+
+	}
+
+	th{
+		padding: 0;
+		display:table-cell;
+		position: static;
+		border-bottom:2px solid var(--charcoal);
+	}
+
+	tr {
+		display:table-row;
+	}
+	tr:nth-child(odd) {
+		background-color: #f5ab71;
+	}
+	tr:nth-of-type(even) {background-color: var(--orange);}
+}
+
