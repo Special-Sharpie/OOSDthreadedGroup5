@@ -185,7 +185,7 @@ app.post('/orderPlaced', (req, res)=>{
     });
     var splitPackage = req.body.package.split(" - ")
     var bookingNum = "ABC" + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9))
-    var customerIdQuery = `SELECT CustomerId FROM customers WHERE CustFirstName="${req.body.fname}" and CustLastName="${req.body.lname}"`
+    var customerIdQuery = `SELECT CustomerId FROM customers WHERE CustEmail="${req.body.email}"`
     con.query(customerIdQuery, (err, results)=>{
         if (err) throw err;
         var customerId = results[0].CustomerId
