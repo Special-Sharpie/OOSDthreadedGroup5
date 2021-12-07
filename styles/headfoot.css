@@ -105,6 +105,9 @@ footer {
     background-color: var(--charcoal);
     padding: .3em 15%;
     color: var(--orange);
+    letter-spacing: 0.1em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
 footer a {
@@ -117,6 +120,16 @@ footer a {
 }
 
 footer a:hover {
+    color: var(--sienna);
+}
+
+footer .nav__link {
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+footer .nav__link:hover {
     color: var(--sienna);
 }
 
