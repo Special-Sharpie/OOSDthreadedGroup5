@@ -13,7 +13,7 @@ const prevButton = document.querySelector('.carousel__button--left');
 const dotsNav = document.querySelector('.carousel__nav');
 const dots = Array.from(dotsNav.children);
 const slideWidth = slides[0].getBoundingClientRect().width;
-const heroText = document.querySelector('.hero-btn-text');
+const heroText = document.querySelector('.hero-text');
 
 const heroTextArray = ['Explore Asia on your own terms', 'The New Years experence of a lifetime', 'Euro Train Adventure', 'Paradise on Earth']
 
