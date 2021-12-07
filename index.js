@@ -145,28 +145,32 @@ app.post('/login', (req, res)=>{
             var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
             con.query(checkPassword, (err, results)=>{
                 if (err) throw err;
-                if (req.body.password == results[0].password){
-                    var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
-                    con.query(customerQuery, (err, results)=>{
-                        if (err) throw err;
-                        delete results[0].password
-                        var packagesQuery = `SELECT PackageId, PkgName, PkgStartDate FROM packages`
-                        var customerData = results[0];
-                        con.query(packagesQuery, (err, results)=>{
+                if (results.length == 0){
+                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
+                }else{
+                    if (req.body.password == results[0].password){
+                        var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
+                        con.query(customerQuery, (err, results)=>{
                             if (err) throw err;
-                            for (var i = 0; i < results.length; i++){
-                                if ( dayjs(results[i].PkgStartDate).diff(dayjs(), 'days') <= 0){
-                                    delete results[i];
-                                };
-                            };
-                            res.render("order", {customer: customerData, packages: results})
-                            con.end((err)=>{
+                            delete results[0].password
+                            var packagesQuery = `SELECT PackageId, PkgName, PkgStartDate FROM packages`
+                            var customerData = results[0];
+                            con.query(packagesQuery, (err, results)=>{
                                 if (err) throw err;
+                                for (var i = 0; i < results.length; i++){
+                                    if ( dayjs(results[i].PkgStartDate).diff(dayjs(), 'days') <= 0){
+                                        delete results[i];
+                                    };
+                                };
+                                res.render("order", {customer: customerData, packages: results})
+                                con.end((err)=>{
+                                    if (err) throw err;
+                                });
                             });
                         });
-                    });
-                }else{
-                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
+                    }else{
+                        res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
+                    }
                 }
             });
         });
