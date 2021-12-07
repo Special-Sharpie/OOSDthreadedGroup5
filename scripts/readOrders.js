@@ -21,6 +21,6 @@ function validate(){
             alert(filledFields + " required fields are missing.");
             return false;
         }else{
-            confirm("Confirm and Submit information?");
+             return confirm("Confirm and Submit information?");
         };
 };

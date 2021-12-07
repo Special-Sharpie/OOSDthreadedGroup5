@@ -105,37 +105,41 @@ app.post('/login', (req, res)=>{
             var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
             con.query(checkPassword, (err, results)=>{
                 if (err) throw err;
-                if (req.body.password == results[0].password){
-                    var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
-                    con.query(customerQuery, (err, results)=>{
-                        if (err) throw err;
-                        delete results[0].password
-                        var agentName = `SELECT AgtFirstName, AgtLastName FROM agents WHERE AgentId="${results[0].AgentId}"`
-                        var customerData = results;
-                        con.query(agentName, (err, results)=>{
-                            customerData[0].AgentId = `${results[0].AgtFirstName} ${results[0].AgtLastName}`
-                        });
-                        var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
-                        con.query(customerOrders, (err, results)=>{
-                            if (err) throw err;
-                            results.forEach((result) => {
-                                result.BookingDate = dateFormatting.formattedDateCust(result.BookingDate);
-                                if (result.TripTypeId == 'B'){
-                                    result.TripTypeId = "Business"
-                                }else if (result.TripTypeId == 'G'){
-                                    result.TripTypeId = "Group"
-                                }else if (result.TripTypeId == 'L'){
-                                    result.TripTypeId = "Leisure"
-                                };
-                            });
-                            res.render("customerhome", {customer: customerData[0], orders: results})
-                            con.end((err)=>{
-                                if (err) throw err;
-                            });
-                        });
-                    });
+                if (results.length == 0){
+                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
                 }else{
-                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href ="/login?path=${req.query.path}"; </script>`);
+                    if (req.body.password == results[0].password){
+                        var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
+                        con.query(customerQuery, (err, results)=>{
+                            if (err) throw err;
+                            delete results[0].password
+                            var agentName = `SELECT AgtFirstName, AgtLastName FROM agents WHERE AgentId="${results[0].AgentId}"`
+                            var customerData = results;
+                            con.query(agentName, (err, results)=>{
+                                customerData[0].AgentId = `${results[0].AgtFirstName} ${results[0].AgtLastName}`
+                            });
+                            var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
+                            con.query(customerOrders, (err, results)=>{
+                                if (err) throw err;
+                                results.forEach((result) => {
+                                    result.BookingDate = dateFormatting.formattedDateCust(result.BookingDate);
+                                    if (result.TripTypeId == 'B'){
+                                        result.TripTypeId = "Business"
+                                    }else if (result.TripTypeId == 'G'){
+                                        result.TripTypeId = "Group"
+                                    }else if (result.TripTypeId == 'L'){
+                                        result.TripTypeId = "Leisure"
+                                    };
+                                });
+                                res.render("customerhome", {customer: customerData[0], orders: results})
+                                con.end((err)=>{
+                                    if (err) throw err;
+                                });
+                            });
+                        });
+                    }else{
+                        res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href ="/login?path=${req.query.path}"; </script>`);
+                    }
                 }
             });
         });
