@@ -5,12 +5,41 @@
 /* 2021-11-30 */
 
 :root {
+    /* Defult */
+
     --charcoal: #264653ff;
     --green: #2a9d8fff;
     --yellow: #e9c46aff;
     --orange: #f4a261ff;
     --orange-accent: #f5ab71;
     --sienna: #e76f51ff;
+
+    /* Christmas Tree */
+
+    /* --charcoal:  #418052;
+    --green: #CFCFCF;
+    --yellow: #e48787;
+    --orange: #FFFFFF;
+    --orange-accent: #84D2EF;
+    --sienna: #C7FBFF; */
+
+    /* Dark Theme Mono */
+
+    /* --charcoal: #494949;
+    --green: #a1a1a1;
+    --yellow: #d8d8d8;
+    --orange: #c2c2c2;
+    --orange-accent:  #969696;
+    --sienna: #5a5a5a; */
+
+    /* Blue */
+
+    /* --charcoal: #2c244b;
+    --green: #574C75;
+    --yellow: #7b9e99;
+    --orange: #dab174;
+    --orange-accent: #EF8E5D;
+    --sienna: #d6415f;  */
 
     background-color: var(--yellow);
     font-family: 'Roboto', sans-serif;

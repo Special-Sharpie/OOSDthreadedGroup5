@@ -23,7 +23,6 @@ th {
 }
 
 table {
-	color: var(--charcoal);
 	border-collapse: collapse;
 	max-width: 100%;
 	margin: auto;

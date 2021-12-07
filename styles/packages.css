@@ -20,7 +20,6 @@ th {
 }
 
 table {
-	color: var(--charcoal);
 	border-collapse: collapse;
 	text-align: center;
 	max-width: 100%;
