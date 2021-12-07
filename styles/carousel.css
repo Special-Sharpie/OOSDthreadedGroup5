@@ -132,7 +132,7 @@
     background-color: rgba(0,0,0, 0.6); /* Black w/opacity/see-through */
     font-weight: bold;
     width: 100%;
-    height: 2em;
+    height: 3.3em;
     position: absolute;
     top: 95%;
     left: 50%;
@@ -141,6 +141,7 @@
     padding: 15px 30px;
     text-align: center;
     pointer-events: none;
+    padding-bottom: 5px;
     /* filter: blur(8px);
     -webkit-filter: blur(8px); */
   }
@@ -168,8 +169,13 @@
 }
 
 @media (min-width:55em) {
+
     .bg__text h1 {
         font-size: 2em;
         width: 30em;
+    }
+    .bg {
+        height:2em ;
+        
     }
 }
