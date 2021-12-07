@@ -12,7 +12,9 @@
     --yellow: #e9c46aff;
     --orange: #f4a261ff;
     --orange-accent: #f5ab71;
+    --orange-trans: #f4a261e6;
     --sienna: #e76f51ff;
+    --sienna-trans: #e76f51e6;
 
     /* Christmas Tree */
 
@@ -21,7 +23,9 @@
     --yellow: #e48787;
     --orange: #FFFFFF;
     --orange-accent: #84D2EF;
-    --sienna: #C7FBFF; */
+    --orange-trans: #FFFFFFE6;
+    --sienna: #C7FBFF;
+    --sienna-trans: #C7FBFFE6; */
 
     /* Dark Theme Mono */
 
@@ -29,8 +33,10 @@
     --green: #a1a1a1;
     --yellow: #d8d8d8;
     --orange: #c2c2c2;
-    --orange-accent:  #969696;
-    --sienna: #5a5a5a; */
+    --orange-accent: #969696;
+    --orange-trans: #5a5a5ae6;
+    --sienna: #5a5a5a;
+    --sienna-trans: #c2c2c2e6; */
 
     /* Blue */
 
@@ -39,7 +45,9 @@
     --yellow: #7b9e99;
     --orange: #dab174;
     --orange-accent: #EF8E5D;
-    --sienna: #d6415f;  */
+    --orange-trans: #dab174e6;
+    --sienna: #d6415f;
+    --sienna-trans: #d6415fe6; */
 
     background-color: var(--yellow);
     font-family: 'Roboto', sans-serif;
@@ -101,8 +109,42 @@ h1, h2, h3, h4, h5, h6 {
 .grid__img {
     object-fit: cover;
     max-height: 20em;
-    width:100%
+    width:100%;
+
+}
+
+.testimonial {
+    background-color: var(--orange);
+    width: 80%;
+    margin: auto;
+    box-shadow: 10px 10px var(--sienna);
+}
+
+.textimonial-text {
+    background-color: var(--orange);
+    width: 25em;
+
+}
+
+.testimonial .testimonial-pic {
+
+    background-color: var(--charcoal);
+    width: 5em;
+    height: 5em;
+    border-radius:50%;
+    margin: 1em 2em !important;
     
+}
+
+.testimonial .main-content {
+    min-height: 0px;
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.testimonial .grid {
+    margin-top: 1em !important;
+    margin-bottom: 0px;
 }
 
 @media (min-width:55em) {
@@ -121,5 +163,8 @@ h1, h2, h3, h4, h5, h6 {
         min-width: 10em;
         max-height: 100%;
     }
-    
+
+    .testimonial .main-content {
+        grid-auto-flow: column;
+    }
 }
