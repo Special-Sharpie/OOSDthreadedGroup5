@@ -47,7 +47,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
 }
-.dark-theme {
+/* .dark-theme {
     --charcoal: rgb(18, 34, 41);
     --green: rgb(22, 70, 63);
     --yellow: rgb(44, 38, 22);
@@ -58,7 +58,7 @@
     --sienna-trans: #412119e6;
     --h-tag-color:rgb(190, 190, 190);
     --text-color: rgb(182, 182, 182);
-}
+} */
 
 body {
     margin: 0;
