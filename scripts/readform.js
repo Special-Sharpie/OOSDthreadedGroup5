@@ -53,7 +53,7 @@ function validate(){
         alert("Invalid Phone Number or Format")
         return false;
     }else{
-        confirm("Confirm and Submit information?");
+        return confirm("Confirm and Submit information?");
     };
 };
 
