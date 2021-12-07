@@ -59,7 +59,7 @@ app.get('/contact', (req, res)=>{
     con.connect((err)=>{
         if (err) throw err;
         
-        var agentQuery="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents";                       //fetching data brom db
+        var agentQuery="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents ORDER by agents.agtFirstName";                       //fetching data brom db
         con.query(agentQuery, (err, results)=>{
             if(err)throw err;
             var agentData = results;
