@@ -39,10 +39,13 @@ function dateFormattingCust(requestedDate){
     /* Two values need to be returned, therefore we use an array */
  };
  
+  /* Three different components are exported below using an array: formattedDate function and 
+   dateColour function with dateColourValue and boldnessValue attributes */
  exports.formattedDate = (requestedDate)=>{
    return [dateFormatting(requestedDate), dateColour(requestedDate)[0], dateColour(requestedDate)[1]];
  };
-
+ 
+ /* Dates in the customers homepage are formatted this exported dateFormattingCust function */
  exports.formattedDateCust = (requestedDate)=>{
    return dateFormattingCust(requestedDate);
  };

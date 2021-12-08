@@ -5,6 +5,7 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-30 -->
 
+<!-- The header is generated dynamically using a unified template -->
 <%- include('head') %>
 	<meta name="description" content="See Vacation Packages Here - the Travel Experts agency">
 	<link rel="stylesheet" type="text/css" href="packages.css" />	
@@ -40,6 +41,7 @@
 						<% } %>
 					<%	} %>
 				<% } %>
+				<!-- A button with a link to order packages is inserted as the last column of the packages table:  -->
 				<td>
 					<a href="/order"><button class="btn"> Order This Package </button></a>
 				</td>
@@ -49,7 +51,7 @@
 		</table>
 		</div>
 		<br> <br> <br> <br> <br>
-
+	<!-- The footer is generated dynamically using a unified template -->
 		<%- include("footer")%>
 
 	</body>

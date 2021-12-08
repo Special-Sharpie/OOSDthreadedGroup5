@@ -1,6 +1,7 @@
 /* packages.css */
 /* styling of the packages page */
-/* Author: Marat Nikitin */
+/* Author: Justin Molnar */
+/* Co-author: Marat Nikitin */
 /* CPRG 207 - Threaded Project */
 /* 2021-11-30 */
 
@@ -87,6 +88,7 @@ td:nth-of-type(5):before { content: "Package Price, CAD"; }
 	tr {
 		display:table-row;
 	}
+	/* Alternating background colours for the table are set here: */
 	tr:nth-child(odd) {
 		background-color: var(--orange-accent);
 	}
