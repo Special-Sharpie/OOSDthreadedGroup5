@@ -14,8 +14,6 @@
     --orange-accent: #f5ab71;
     --sienna: #e76f51ff;
     --sienna-trans: #e76f51e6;
-    --h-tag-color: var(--charcoal);
-    --text-color: black;
 
     /* Christmas Tree */
 
@@ -24,7 +22,9 @@
     --yellow: #e48787;
     --orange: #FFFFFF;
     --orange-accent: #84D2EF;
-    --sienna: #C7FBFF; */
+    --orange-trans: #FFFFFFE6;
+    --sienna: #C7FBFF;
+    --sienna-trans: #C7FBFFE6; */
 
     /* Dark Theme Mono */
 
@@ -32,8 +32,10 @@
     --green: #a1a1a1;
     --yellow: #d8d8d8;
     --orange: #c2c2c2;
-    --orange-accent:  #969696;
-    --sienna: #5a5a5a; */
+    --orange-accent: #969696;
+    --orange-trans: #5a5a5ae6;
+    --sienna: #5a5a5a;
+    --sienna-trans: #c2c2c2e6; */
 
     /* Blue */
 
@@ -42,10 +44,14 @@
     --yellow: #7b9e99;
     --orange: #dab174;
     --orange-accent: #EF8E5D;
-    --sienna: #d6415f;  */
+    --orange-trans: #dab174e6;
+    --sienna: #d6415f;
+    --sienna-trans: #d6415fe6;  */
 
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
+    --h-tag-color: var(--charcoal);
+    --text-color: black;
 }
 
 
