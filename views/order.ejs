@@ -5,15 +5,6 @@
 <!-- 2021-12-04 -->
 
 <%- include('head') %>
-    <script>
-        function revealDescription(id){
-            document.getElementById(id).style.visibility = 'visible'
-            }
-        function hideDescription(id){
-            document.getElementById(id).style.visibility = "hidden"
-        }
-    </script>
-
     <script src="readOrders.js"></script>
 
     <meta name="description" content="Order vacation packages in here: for the customers of the Travel Experts agency">
@@ -34,17 +25,17 @@
                 <form id="orderForm" method="post" action="/orderPlaced">
                     <label for="fname">First Name</label> 
                     <br />
-                    <input type="text" name="fname" onfocus="revealDescription('firstname')" onblur="hideDescription('firstname')" value="<%= customer.CustFirstName %>" readonly="readonly" />
+                    <input type="text" name="fname" value="<%= customer.CustFirstName %>" readonly="readonly" />
                     <span id="firstname" style="visibility: hidden;">Account Firstname</span>
                     <br />
                     <label for="lname">Last Name</label>
                     <br />
-                    <input type="text" name="lname" onfocus="revealDescription('lastname')" onblur="hideDescription('lastname')" value="<%= customer.CustLastName %>" readonly="readonly" />
+                    <input type="text" name="lname" value="<%= customer.CustLastName %>" readonly="readonly" />
                     <span id="lastname" style="visibility: hidden;">Account Lastname</span>
                     <br />
                     <label for="email">Email</label>
                     <br />
-                    <input type="email" name="email" onfocus="revealDescription('email')" onblur="hideDescription('email')" value="<%= customer.CustEmail %>" readonly="readonly" />
+                    <input type="email" name="email" value="<%= customer.CustEmail %>" readonly="readonly" />
                     <span id="email" style="visibility: hidden;">Account Email</span>
                     <br />
                     <label for="package">Select one of our current Packages!</label>

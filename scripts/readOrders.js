@@ -6,6 +6,8 @@
  * 2021-12-04
  */
 
+// Function to validate the order form.
+// Ensures that all fields are filled
 function validate(){
         var elements = document.getElementById("orderForm").elements;
         var form = document.forms[0]
