@@ -4,6 +4,7 @@
  * Author: Daniel Palmer
  * Co-author: Justin Molnar
  * Co-author: Marat Nikitin
+ * Co-author: Shifa Malik
  * CPRG 207 - Threaded Project
  * 2021-11-22
  */
@@ -64,6 +65,8 @@ app.get('/contact', (req, res)=>{
 		password: "pass",
 		database: "travelexperts"
     });
+    
+    //Pulls agents name , phone number and e-mail from the database and passes to contact page    
     con.connect((err)=>{
         if (err) throw err;
         
