@@ -4,6 +4,13 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-29 -->
 
+<!-- Co-author: Justin Molnar -->
+<!-- Cleaned up head/header with EJS -->
+<!-- Styled/Built table from raw data -->
+
+<!-- Raw data pulled from DB by Daniel -->
+<!-- Specific Data styled into table by Justin -->
+
 <%- include('head') %>
     <link rel="stylesheet" href="customerhome.css">
     <meta name="description" content="See your personal and orders info here">
@@ -11,16 +18,16 @@
 <%- include('header') %>
 
     <h2>
-        Welcome Back <%= customer.CustFirstName %>!
+        Welcome Back <%= customer.CustFirstName %>!  <!-- First name in h1 at top of screen -->
     </h2>
 
     <div class="main-content">
         
         <div class="grid">
-            <table class="bottom-border">
+            <table class="bottom-border"> <!-- Table of Customer Information, First/Last name, Cust ID, Address (Postal, city prov), Home and Business Phone, Email and Agent -->
                 <tr>
                     <td class="label"><b>Name:</b></td><td><%= customer.CustFirstName %> <%= customer.CustLastName %> </td>
-                    <td></td><td class="label"><b>Customer ID:</b></td><td><%= customer.CustomerId %></td>
+                    <td></td><td class="label"><b>Customer ID:</b></td><td><%= customer.CustomerId %></td> 
                 </tr>
                 <!-- Blank Row --><tr><td style="height: 2em;"></td></tr>
                 <tr>
@@ -31,7 +38,6 @@
                     <td><%= customer.CustCity %> <%= customer.CustProv %></td>
                 </tr>
                 <tr>
-
                     <td class="label"><b>Home Phone:</b></td><td>(<%= customer.CustHomePhone.slice(0, 3) %>) <%= customer.CustHomePhone.slice(3, 6) %>-<%= customer.CustHomePhone.slice(6, 10) %></td>
                     <td></td><td class="label"><b>Business Phone:</b></td><td>(<%= customer.CustBusPhone.slice(0, 3) %>) <%= customer.CustBusPhone.slice(3, 6) %>-<%= customer.CustBusPhone.slice(6, 10) %></td>
                 </tr>
@@ -47,8 +53,8 @@
             </h2>
             
             <div class="grid">
-            
-                <% orders.forEach((order)=>{ %> 
+            <!-- Table of Booking information, Booking ID, Number, Date, Traveler count, Trip Type -->
+                <% orders.forEach((order)=>{ %>  <!-- Build a table for each order pulled from DB -->
                     <table>
                     <tr>
                         <td class="label"><b>Booking ID:</b></td><td><%= order.BookingId %></td>
@@ -62,7 +68,7 @@
                         <td class="label"><b>Trip Type:</b></td><td><%= order.TripTypeId %></td>
                     </tr>
                 </table>
-                <% }) %> 
+                <% }) %> <!-- End of for each -->
            
         </div>
         </div>

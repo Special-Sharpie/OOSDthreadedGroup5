@@ -4,12 +4,19 @@
 /* CPRG 207 - Threaded Project */
 /* 2021-12-03 */
 
+/* Co-author: Justin Molnar */
+/* Heavily altered and maintained all CSS */
+
+
+/* Defult/Mobile */
+
 li {
     list-style-type: none;
 }
 
+
 table, th, td, tr {
-	display: block;
+	display: block; /* Makes tables not act like tables, columns instead of rows */
 	}
 
 /* Hide table headers (but not display: none;, for accessibility) */
@@ -27,19 +34,15 @@ table {
 	max-width: 100%;
 	margin: auto;
 	border:2px solid var(--charcoal);
-	
 }
 
 tr {
 	background-color:  var(--orange);
-
     border-collapse: collapse;
-
 }
 
 td {
 	position: relative;
-
 	border-bottom: solid var(--charcoal) 2px;
 }
 
@@ -47,7 +50,7 @@ tr:nth-of-type(even) {
 	background-color: var(--sienna);
 }
 
-
+/* Desktop only, make tables act like tables again and style */
 @media (min-width:55em) {
 
 	table {
@@ -55,13 +58,10 @@ tr:nth-of-type(even) {
 		max-width: 85%;
 	}
 
-
-
 	td {
 		display:table-cell;
 		position: static;
 		padding: .7em .5em .7em .5em;
-
 	}
 
 	th{
@@ -74,9 +74,11 @@ tr:nth-of-type(even) {
 	tr {
 		display:table-row;
 	}
+
 	tr:nth-child(odd) {
 		background-color: var(--orange-accent);
 	}
+
 	tr:nth-of-type(even) {background-color: var(--orange);}
 }
 

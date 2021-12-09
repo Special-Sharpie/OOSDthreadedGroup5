@@ -4,6 +4,9 @@
 /* CPRG 207 - Threaded Project */
 /* 2021-12-01 */
 
+/* Styling for registration form */
+
+/* Defult/Mobile */
 label {
 margin-right: 1em;
 }
@@ -13,7 +16,7 @@ input, button, select {
 }
 
 span {
-    display: none;
+    display: none; /* Disable showing span - didn't delete in case we wanted to bring back */
 }
 
 table {
@@ -41,6 +44,7 @@ table caption {
     margin: .5em 0 .75em;
     }
 
+    /* Desktop Only */
   @media (min-width:55em) {
 
     table {

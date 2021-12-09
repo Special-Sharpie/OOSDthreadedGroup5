@@ -10,6 +10,8 @@
 	<title>Welcome to Travel Experts</title>
 <%- include('header') %>
 
+
+<!-- Hero Carousel -->
 <div class="carousel">
 	<div class="carousel__track-container">
 		<ul class="carousel__track">
@@ -28,12 +30,13 @@
 		</ul>
 	</div>
 
+<!-- Left/Right Buttons on Carousel -->
 <button class="carousel__button carousel__button--left is-hidden">&#10094;</button>
 <button class="carousel__button carousel__button--right">&#10095;</button>
 
+<!-- Hero Button, Text and bg to make text legible -->
 <div class="bg">
 <h1></h1></div>
-
 
   <div class="bg__text">
 	<h1 class="hero-text">Explore Asia on your own terms</h1>
@@ -45,13 +48,7 @@
 	</button>
 </a>
 
-<!-- <a href="getpackages">
-	<button class="carousel__button carousel__button--cta">
-		<p class="hero-text">Explore Asia on your own terms</p>
-		<p style="font-size: 1.2em;"><b>Book Now!</b></p>
-	</button>
-</a> -->
-
+<!-- Indicator dots under carousel to let you know what image you are currently on -->
 <div class="carousel__nav">
 	<button class="carousel__indicator current-slide"></button>
 	<button class="carousel__indicator"></button>
@@ -63,6 +60,7 @@
 <br>
 <div class="main-content" style="min-height: 0;">
 	<div class="grid">
+		<!-- First Content Blurb -->
 		<h1>Welcome to Travel Experts!</h1>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -85,6 +83,8 @@
 		<img class="grid grid__img" style="margin-top: 3em;" src="suitcases.jpg">
 	</div>
 </div>
+
+<!-- Testimonial section -->
 <div class="testimonial">
 	<div class="main-content" style="height:100%">
 
@@ -112,6 +112,8 @@
 		</div>
 	</div>
 </div>
+
+<!-- About us, in its own main-content div so it doesn't interact with the above divs -->
 <div class="main-content" style="min-height: 0;">
 	<div class="grid">
 		<h3>About Us...</h3>

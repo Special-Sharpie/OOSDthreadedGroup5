@@ -4,6 +4,14 @@
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-29 -->
 
+<!-- Co-author: Justin Molnar -->
+<!-- Cleaned up head/header with EJS -->
+<!-- Styled -->
+
+<!-- Co-author: Daniel Palmer -->
+<!-- Created Agencies List -->
+
+
 <%- include('head') %>
     <meta name="description" content="Contact Information of the Travel Experts Agency & Individual Travel Agents">
     <title>Contact Us - Travel Experts</title>
@@ -23,11 +31,11 @@
         more important aspects of your travel. <a href="register">Register</a> with us 
         so that you get our top deals.</p>
     </div><div class="grid">
+
         <% agencies.forEach((agencies)=>{ %>
             <h3>Get in contact with our <%= agencies.AgncyCity %>  team!</h3>
             <ul class="contactlist">
                 <li class="contactlistitem"><span class="contactbody">Call us at (<%= agencies.AgncyPhone.slice(0, 3) %>)-<%= agencies.AgncyPhone.slice(3, 6) %>-<%= agencies.AgncyPhone.slice(6, 10) %></span></li>
-                <!-- Having the email in the webpage is a great way to get your email blasted with spam, but I did not feeling like implementing an email form for a fake email.-->
                 <li class="contactlistitem"><span class="contactbody">Email us at <a href="mailto:customer.service@gatortravels.ca" class="linkcolour">customer.service@gatortravels.ca</a></span></li>
                 <li class="contactlistitem"><span class="contactbody">Visit our office on <%= agencies.AgncyAddress %>, <%= agencies.AgncyCity %> <%= agencies.AgncyProv %>, <%= agencies.AgncyCountry %></span></li>      
             </ul>
@@ -36,16 +44,13 @@
 </div></div>
     <div class="main-content">
     <table>
-
-                    <tr><th colspan="3">Get in Touch</th></tr>
-
-
-                    <% result.forEach((result)=>{ %> 
-                    <tr>
-                        <td><%= result.agtFirstName %> <%= result.agtLastName %></td>
-                        <td><%= result.agtBusPhone %></td><td><a style="color:var(--charcoal)" href="mailto:<%= result.AgtEmail %>"><%= result.AgtEmail %></a></td>
-                    </tr>
-                    <% }); %>
+            <tr><th colspan="3">Get in Touch</th></tr>
+                <% result.forEach((result)=>{ %> 
+            <tr>
+                <td><%= result.agtFirstName %> <%= result.agtLastName %></td>
+                <td><%= result.agtBusPhone %></td><td><a style="color:var(--charcoal)" href="mailto:<%= result.AgtEmail %>"><%= result.AgtEmail %></a></td>
+            </tr>
+            <% }); %>
     </table>
 </div>
     
