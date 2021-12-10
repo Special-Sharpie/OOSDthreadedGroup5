@@ -22,6 +22,8 @@
     <div class="main-content" style="min-height: 0;">
     <div class="grid">
     <h3>About Us...</h3>
+
+    <!--A breif introduction about the client with two links , one directing to 404 page-->
     <p class="para" >We are one of the leading travel agencies in Alberta. At Travel Experts, we take pride
          in providing our clients with customized services right from planning to conclusion of your trips
           including rescheduling and documentation. For business or pleasure, we take pride in providing you
@@ -31,7 +33,8 @@
         more important aspects of your travel. <a href="register">Register</a> with us 
         so that you get our top deals.</p>
     </div><div class="grid">
-
+        
+        <!--Pulling data from agencies table-->
         <% agencies.forEach((agencies)=>{ %>
             <h3>Get in contact with our <%= agencies.AgncyCity %>  team!</h3>
             <ul class="contactlist">
@@ -42,7 +45,8 @@
         <% }); %>
 
 </div></div>
-    <div class="main-content">
+  
+<div class="main-content">
     <table>
             <tr><th colspan="3">Get in Touch</th></tr>
                 <% result.forEach((result)=>{ %> 
