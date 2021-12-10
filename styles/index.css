@@ -1,11 +1,11 @@
 /* index.css */
-/* styling of the main page */
+/* Main CSS file used across entire site */
 /* Author: Justin Molnar */
 /* CPRG 207 - Threaded Project */
 /* 2021-11-30 */
 
 :root {
-    /* Defult */
+    /* Defult Palette */
 
     --charcoal: #264653ff;
     --green: #2a9d8fff;
@@ -14,6 +14,8 @@
     --orange-accent: #f5ab71;
     --sienna: #e76f51ff;
     --sienna-trans: #e76f51e6;
+
+    /* Temparary way to change colors, Comment out defult and Uncomment any other group of colors */
 
     /* Christmas Tree */
 
@@ -50,10 +52,13 @@
 
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
+
+    /* Text and <h> color vars */
     --h-tag-color: var(--charcoal);
     --text-color: black;
 }
 
+/* Defult values/Mobile */
 
 body {
     margin: 0;
@@ -69,6 +74,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
 }
 
+
+/* 90% of content on the website is in .main-content and .grid, used for congruient nice looking text,
+and responsiveness.  This section makes eveything below a certain screen-size display in a grid as a row,
+below is a media query to make into column on larger screens */
+
 .main-content {
     margin: auto;
     display: grid;
@@ -80,19 +90,27 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 80vh;
 }
 
-.main-content a {
-    color: var(--green)
-}
-
 .main-content .grid {
     max-width: 100%;
     margin: auto;
+}
+
+/* make images a bit more responsive */
+.grid__img {
+    object-fit: cover; /* Crops image to certain size if screen is too small instead of just resizing */
+    max-height: 20em;
+    width:100%
+}
+
+.main-content a {
+    color: var(--green)
 }
 
 .push-down {
     margin-top: 1em;
 }
 
+/* Button styling - used across several pages */
 .btn {
 	font-size: 0.9rem;
 	border-radius: 6px;
@@ -109,12 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: var(--charcoal);
 }
 
-.grid__img {
-    object-fit: cover;
-    max-height: 20em;
-    width:100%
-    
-}
+/* Main Page Testimonial section */
 .testimonial {
     background-color: var(--orange);
     width: 80%;
@@ -125,7 +138,6 @@ h1, h2, h3, h4, h5, h6 {
 .textimonial-text {
     background-color: var(--orange);
     width: 25em;
-
 }
 
 .testimonial .testimonial-pic {
@@ -149,6 +161,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0px;
 }
 
+
+/* Everything above is defult for small screens (mobile first) and below is media querys to overwrite for larger screens */
 @media (min-width:55em) {
 
 	.main-content {

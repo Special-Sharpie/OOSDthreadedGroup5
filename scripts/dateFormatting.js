@@ -7,6 +7,9 @@
  * 2021-12-02
  */
 
+/*  Co-author: Justin Molnar
+ Added a second export to be used on customerhome */
+
  const dayjs = require("dayjs");
  const advancedFormat = require('dayjs/plugin/advancedFormat');
  dayjs.extend(advancedFormat);
@@ -44,8 +47,8 @@ function dateFormattingCust(requestedDate){
  exports.formattedDate = (requestedDate)=>{
    return [dateFormatting(requestedDate), dateColour(requestedDate)[0], dateColour(requestedDate)[1]];
  };
- 
- /* Dates in the customers homepage are formatted this exported dateFormattingCust function */
+
+ //Exports function for customer home (Justin Molnar)
  exports.formattedDateCust = (requestedDate)=>{
    return dateFormattingCust(requestedDate);
  };

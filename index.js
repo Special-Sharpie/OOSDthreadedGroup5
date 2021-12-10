@@ -4,20 +4,24 @@
  * Author: Daniel Palmer
  * Co-author: Justin Molnar
  * Co-author: Marat Nikitin
+ * Co-author: Shifa Malik
  * CPRG 207 - Threaded Project
  * 2021-11-22
  */
 
+//Include Dependencies
 const dayjs = require("dayjs");
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const dateFormatting= require("./scripts/dateFormatting");
 
+//Define port for server
 var port = 8000;
 
 app.use(express.urlencoded({extended: true}))
 
+// Establish Static folders
 app.use(express.static("scripts"))
 app.use(express.static("views", {"extensions": ["html", "htm"]}))
 app.use(express.static("assets"))
@@ -25,13 +29,18 @@ app.use(express.static("styles"))
 
 app.set("view engine", "ejs")
 
+// Open server on port defined above
 app.listen(port, ()=>{
     console.log(`Server started on port ${port}, url: http://localhost:${port}`)
 });
 
+
+// Server the homepage by default
 app.get('/', (req, res)=>{
     res.render('index')
 });
+
+// Below servers as navigation for the webpage
 
 app.get('/register', (req, res)=>{
     const con = mysql.createConnection({
@@ -56,10 +65,12 @@ app.get('/contact', (req, res)=>{
 		password: "pass",
 		database: "travelexperts"
     });
+    
+    //Pulls agents name , phone number and e-mail from the database and passes to contact page    
     con.connect((err)=>{
         if (err) throw err;
         
-        var agentQuery="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents ORDER by agents.agtFirstName";                       //fetching data brom db
+        var agentQuery="select agents.agtFirstName, agents.agtLastName, agents.agtBusPhone, agents.AgtEmail from agents ORDER by agents.agtFirstName"; //fetching data from db, ordered by first name
         con.query(agentQuery, (err, results)=>{
             if(err)throw err;
             var agentData = results;
@@ -73,10 +84,6 @@ app.get('/contact', (req, res)=>{
             });
         });
     });
-});
-
-app.get('/packages', (req, res)=>{
-    res.render('packages')
 });
 
 app.get('/login', (req, res)=>{
@@ -99,30 +106,39 @@ app.post('/login', (req, res)=>{
 		password: "pass",
 		database: "travelexperts"
     });
+    // Checks the path that was redirected from
     if (req.query.path == "/customerhome"){
         con.connect((err)=>{
             if (err) throw err;
+            // Selects the customer based on email provided
             var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
             con.query(checkPassword, (err, results)=>{
                 if (err) throw err;
+                // Checks if the email exists in the database
                 if (results.length == 0){
                     res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
                 }else{
+                    // Checks if the provided password matches what is recorded in the database
                     if (req.body.password == results[0].password){
+                        // Collects customer data from database
                         var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
                         con.query(customerQuery, (err, results)=>{
                             if (err) throw err;
                             delete results[0].password
+                            // Humanizes the Agent... converts from AgentId to Agent name
                             var agentName = `SELECT AgtFirstName, AgtLastName FROM agents WHERE AgentId="${results[0].AgentId}"`
                             var customerData = results;
                             con.query(agentName, (err, results)=>{
                                 customerData[0].AgentId = `${results[0].AgtFirstName} ${results[0].AgtLastName}`
                             });
+                            // Collect all bookings under customer name
                             var customerOrders = `SELECT * FROM bookings WHERE CustomerId="${results[0].CustomerId}"`
                             con.query(customerOrders, (err, results)=>{
                                 if (err) throw err;
                                 results.forEach((result) => {
                                     result.BookingDate = dateFormatting.formattedDateCust(result.BookingDate);
+                                    // I ran into some timing issues here trying to work in the database,
+                                    // so for the sake of time and simplicity I hard coded the values
                                     if (result.TripTypeId == 'B'){
                                         result.TripTypeId = "Business"
                                     }else if (result.TripTypeId == 'G'){
@@ -146,22 +162,29 @@ app.post('/login', (req, res)=>{
     }else if(req.query.path =="/order"){
         con.connect((err)=>{
             if (err) throw err;
+            // Selects the customer based on email provided
             var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
             con.query(checkPassword, (err, results)=>{
                 if (err) throw err;
+                // Checks if the email exists in the database
                 if (results.length == 0){
                     res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/login?path=${req.query.path}"; </script>`);
                 }else{
+                    // Checks if the provided password matches what is recorded in the database
                     if (req.body.password == results[0].password){
+                        // Collects customer data from database
                         var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
                         con.query(customerQuery, (err, results)=>{
                             if (err) throw err;
                             delete results[0].password
+                            // Collects package data from database
                             var packagesQuery = `SELECT PackageId, PkgName, PkgStartDate FROM packages`
                             var customerData = results[0];
                             con.query(packagesQuery, (err, results)=>{
                                 if (err) throw err;
                                 for (var i = 0; i < results.length; i++){
+                                    // Checks the package start date vs the current date,
+                                    // Deleting anyrows that have expired
                                     if ( dayjs(results[i].PkgStartDate).diff(dayjs(), 'days') <= 0){
                                         delete results[i];
                                     };
@@ -183,7 +206,8 @@ app.post('/login', (req, res)=>{
 
 
 
-
+// Post method that inserts account data into database
+// Serves orderPlaced landing page on successful completion
 app.post('/orderPlaced', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
@@ -193,6 +217,7 @@ app.post('/orderPlaced', (req, res)=>{
     });
     var splitPackage = req.body.package.split(" - ")
     var bookingNum = "ABC" + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9))
+    // Searches database for customer with provided email
     var customerIdQuery = `SELECT CustomerId FROM customers WHERE CustEmail="${req.body.email}"`
     con.query(customerIdQuery, (err, results)=>{
         if (err) throw err;
@@ -201,6 +226,7 @@ app.post('/orderPlaced', (req, res)=>{
         con.query(tripIdQuery, (err, results)=>{
             if (err) throw err;
             var tripId = results[0].TripTypeId
+            // Creates a booking record, inserting all neccesary values
             var addBooking ="INSERT INTO bookings(BookingDate, BookingNo, TravelerCount, CustomerId, TripTypeId, PackageId) VALUES (?,?,?,?,?,?)"
             con.query(addBooking, [dayjs().format(), bookingNum, req.body.groupSize, customerId, tripId, splitPackage[0]], (err, results)=>{
                 if (err) throw err;
@@ -305,17 +331,22 @@ app.get("/getpackages", (req, res)=>{
         });
     });
 });
-
+// Redirects the user to the login page
+// Passes the path down to the login page as part of the query
+// to give context to login page
 app.get('/customerhome', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
     res.redirect('/login?path=' + pathRequested)
 });
 
+// Redirects the user to the login page
+// Passes the path down to the login page as part of the query
+// to give context to login page
 app.get('/order', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
     res.redirect('/login?path=' + pathRequested)
 })
-
+// Catches 404 errors and renders 404 error page
 app.use((req, res)=>{
     res.status(404).render("404")
 });

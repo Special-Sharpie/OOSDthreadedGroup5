@@ -3,30 +3,28 @@
 <!-- Author: Justin Molnar -->
 <!-- CPRG 207 - Threaded Project -->
 <!-- 2021-11-29 -->
-<link rel="stylesheet" href="index.css">
+
+<link rel="stylesheet" href="index.css"> <!-- index.css is here instead of head.ejs so it loads after everything else -->
 </head>
 <body>
 
-<nav>
-    <img class="logo" src="logo2.png">
-    <button class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-    </button>
-    <ul class="nav" id="navul">
-        <li><a class="nav__link" href="/">Home</a></li>
-        <li><a class="nav__link" href="/getpackages">Packages</a></li>
-        <li><a class="nav__link" href="/customerhome">Profile</a></li>
-        <li><a class="nav__link" href="/register">Register</a></li>
-        <li><a class="nav__link" href="/contact">Contact</a></li>
-        <!-- <li>
-            <a class="icon--head" href="https://twitter.com" target="_blank"><i class="fab fa-twitter-square icon"></i></a>
-            <a class="icon--head" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-square icon"></i></a>
-            <a class="icon--head" href="https://instagram.com" target="_blank"><i class="fab fa-instagram-square icon"></i></a>
-        </li> -->
-    </ul>
-</nav>
+    <nav>
+        <img class="logo" src="logo2.png">
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav" id="navul">
+            <li><a class="nav__link" href="/">Home</a></li>
+            <li><a class="nav__link" href="/getpackages">Packages</a></li>
+            <li><a class="nav__link" href="/customerhome">Profile</a></li>
+            <li><a class="nav__link" href="/register">Register</a></li>
+            <li><a class="nav__link" href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
 <br><br>
 
+<!-- Script for responive navigation, clicking hamburger button toggles .show class on navul -->
 <script>
     const hamburger = document.getElementById('hamburger');
     const navul = document.getElementById('navul');

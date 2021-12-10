@@ -5,11 +5,18 @@
 /* CPRG 207 - Threaded Project */
 /* 2021-11-30 */
 
+/* Co-author: Justin Molnar */
+/* Heavily altered and maintained all CSS */
+
+
+/* Defult values/Mobile */
+
+/* Makes tables not act like tables on mobile */
 table, th, td, tr {
 	display: block;
 	}
 
-/* Hide table headers (but not display: none;, for accessibility) */
+/* Hide table headers on mobile (but not display: none;, for accessibility) */
 th {
 	position: absolute;
 	top: -9999px;
@@ -26,7 +33,6 @@ table {
 	max-width: 100%;
 	margin: auto;
 	border:2px solid var(--charcoal);
-	
 }
 
 tr {
@@ -36,13 +42,16 @@ tr {
 
 td {
 	position: relative;
-	padding-left: 50%;
+	padding-left: 50%; /* Push td to right side of screen (mobile) */
 	border-bottom: solid var(--charcoal) 2px;
 }
 
+/* Alternating Color of rows */
 tr:nth-of-type(even) {
 	background-color: var(--sienna);
 }
+
+/* On left side of screen display info before each td */
 td:before {
 	position: absolute;
 	/* Top/left values mimic padding */
@@ -53,7 +62,7 @@ td:before {
 	white-space: nowrap;
 	font-weight: 600;
 }
-
+/* What to display before tds */
 td:nth-of-type(1):before { content: "Package Name"; }
 td:nth-of-type(2):before { content: "Start Date"; }
 td:nth-of-type(3):before { content: "End Date"; }
@@ -61,21 +70,19 @@ td:nth-of-type(4):before { content: "Description"; }
 td:nth-of-type(5):before { content: "Package Price, CAD"; }
 
 
-
+/* Below applies to larger screens only */
 @media (min-width:55em) {
 
+	/* Make tables act like tables on larger screens */
 	table {
 		display:table;
 		max-width: 85%;
 	}
 
-
-
 	td {
 		display:table-cell;
 		position: static;
 		padding: .7em .5em .7em .5em;
-
 	}
 
 	th{
@@ -88,7 +95,8 @@ td:nth-of-type(5):before { content: "Package Price, CAD"; }
 	tr {
 		display:table-row;
 	}
-	/* Alternating background colours for the table are set here: */
+
+	/* Alternating row colors */
 	tr:nth-child(odd) {
 		background-color: var(--orange-accent);
 	}

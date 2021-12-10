@@ -1,12 +1,15 @@
 /* headfoot.css */
-/* styling of the header and footer */
+/* Styling of the header and footer used on every page */
 /* Author: Justin Molnar */
 /* CPRG 207 - Threaded Project */
 /* 2021-11-30 */
 
 
+/* Defult/Mobile */
+
 /* Header */
 
+/* Logo in Nav Bar */
 .logo {
     max-height: 1.5em;
     padding: .22em 0 .22em 5%;
@@ -15,6 +18,7 @@
 
 }
 
+/* Stick to top of screen and styling for nav bar */
 nav {
     background-color: var(--charcoal);
     position:fixed;
@@ -39,12 +43,12 @@ nav ul {
     width:63%;
     align-items: center;
     justify-content: center;
-    display:none;
+    display:none; /* Don't display on mobile unless the below class .show overwrites */
     flex-direction: column;
     margin: auto;
 }
 
-
+/* Class added/removed if user clicks hamburger button in mobile view */
 .show {
     display: flex;
 }
@@ -76,6 +80,7 @@ nav a:hover {
     padding-right: .2em;
  }
 
+ /* Button for responsive navigation bar, clicking the hambuger hides or shows the navigation on mobile */
 .hamburger {
     background-color: transparent;
     border: 0;
@@ -142,16 +147,20 @@ footer p {
     padding: .2em .2em;
 }
 
+
+/* Desktop only */
 @media (min-width:55em) {
     
     footer {
     grid-auto-flow: column;
     margin: auto;
     }
+
     .hamburger {
-        display: none;
+        display: none; /* Don't show hamburger if screen large enough */
     }
 
+    /* Change navigation to row (from column) on large screens */
     nav ul {
         display:flex;
         flex-direction: row;
